@@ -22,7 +22,6 @@ public class MainPageController {
     private Tab tabAddCopy;
 
 
-
     @FXML
     private Label welcomeText;
 
@@ -50,6 +49,7 @@ public class MainPageController {
                 tabBook.setDisable(true);
                 tabCheckout.setDisable(false);
                 tabAddCopy.setDisable(true);
+                tabPane.getSelectionModel().select(2);
                 break;
             case ADMIN:
                 tabMember.setDisable(false);
@@ -72,10 +72,10 @@ public class MainPageController {
         welcomeText.setText("Welcome to JavaFX Application!");
 
 
-
     }
+
     @FXML
-    protected  void callBlah() {
+    protected void callBlah() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 }

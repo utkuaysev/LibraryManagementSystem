@@ -1,78 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.MainPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.CheckoutPageController">
     <children>
-      <SplitPane dividerPositions="0.8815274151436031" orientation="VERTICAL" prefHeight="614.0" prefWidth="830.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                    <TabPane prefHeight="583.0" prefWidth="830.0" tabClosingPolicy="UNAVAILABLE">
-                        <tabs>
-                            <Tab text="Book">
-                           <content>
-                              <Pane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <Button fx:id="bookButton" layoutX="750.0" layoutY="454.0" mnemonicParsing="false" onAction="#onHelloButtonClick" text="Button" />
-                                    <Label fx:id="welcomeText" layoutX="226.0" layoutY="173.0" prefHeight="43.0" prefWidth="243.0" text="Label" />
-                                 </children>
-                              </Pane>
-                           </content></Tab>
-                            <Tab text="Member" />
-                            <Tab text="Checkout Book">
-                           <content>
-                              <BorderPane prefHeight="200.0" prefWidth="200.0">
-                                 <center>
-                                    <VBox prefHeight="555.0" prefWidth="580.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <TextField prefHeight="47.0" prefWidth="830.0" promptText="MemberId">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </TextField>
-                                          <TextField prefHeight="48.0" prefWidth="830.0" promptText="ISBN">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </TextField>
-                                          <Button fx:id="checkoutButton" defaultButton="true" mnemonicParsing="false" onAction="#clickedcheckoutButton" prefHeight="52.0" prefWidth="830.0" text="Checkout" textFill="#302e2e">
-                                             <font>
-                                                <Font size="21.0" />
-                                             </font>
-                                          </Button>
-                                          <TableView prefHeight="283.0" prefWidth="830.0">
-                                            <columns>
-                                              <TableColumn prefWidth="177.60003048181534" text="Library Member" />
-                                                <TableColumn prefWidth="184.80001831054688" text="Book Name" />
-                                              <TableColumn maxWidth="293.6000061035156" minWidth="-1.0" prefWidth="245.5999755859375" text="CheckoutDate" />
-                                                <TableColumn prefWidth="218.4000244140625" text="DueDate" />
-                                            </columns>
-                                          </TableView>
-                                       </children>
-                                    </VBox>
-                                 </center>
-                              </BorderPane>
-                           </content></Tab>
-                            <Tab text="Add Copy" />
-                        </tabs>
-                    </TabPane>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
-        </items>
-      </SplitPane>
+
+        <BorderPane prefHeight="600.0" prefWidth="830.0">
+            <center>
+                <VBox prefHeight="555.0" prefWidth="580.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <TextField prefHeight="47.0" prefWidth="830.0" promptText="MemberId">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </TextField>
+                        <TextField prefHeight="48.0" prefWidth="830.0" promptText="ISBN">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </TextField>
+                        <Button fx:id="checkoutButton" defaultButton="true" mnemonicParsing="false" onAction="#clickedcheckoutButton" prefHeight="52.0" prefWidth="830.0" text="Checkout" textFill="#302e2e">
+                            <font>
+                                <Font size="21.0" />
+                            </font>
+                        </Button>
+                        <TableView prefHeight="400.0" prefWidth="830.0">
+                            <columns>
+                                <TableColumn prefWidth="177.60003048181534" text="Library Member" />
+                                <TableColumn prefWidth="184.80001831054688" text="Book Name" />
+                                <TableColumn maxWidth="293.6000061035156" minWidth="-1.0" prefWidth="245.5999755859375" text="CheckoutDate" />
+                                <TableColumn prefWidth="218.4000244140625" text="DueDate" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+
     </children>
 </AnchorPane>

@@ -7,9 +7,9 @@
     <children>
       <SplitPane dividerPositions="0.8815274151436031" orientation="VERTICAL" prefHeight="600.0" prefWidth="830.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="522.0" prefWidth="828.0">
                <children>
-                    <TabPane fx:id="tabPane" prefHeight="538.0" prefWidth="829.0" tabClosingPolicy="UNAVAILABLE">
+                    <TabPane fx:id="tabPane" prefHeight="500.0" prefWidth="830.0" tabClosingPolicy="UNAVAILABLE">
                         <tabs>
                             <Tab fx:id="tabBook" text="Book">
                            <content>
@@ -21,13 +21,15 @@
                               </Pane>
                            </content></Tab>
                             <Tab fx:id="tabMember" text="Member" />
-                            <Tab fx:id="tabCheckout" text="Checkout Book" />
+                            <Tab fx:id="tabCheckout" text="Checkout Book">
+                            <fx:include source="CheckoutPage.fxml" />
+                            </Tab>
                             <Tab fx:id="tabAddCopy" text="Add Copy" />
                         </tabs>
                     </TabPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+            <AnchorPane prefHeight="150.0" prefWidth="828.0" />
         </items>
       </SplitPane>
     </children>
