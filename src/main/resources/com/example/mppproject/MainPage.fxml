@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.MainPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.MainPageController">
     <children>
       <SplitPane dividerPositions="0.8815274151436031" orientation="VERTICAL" prefHeight="600.0" prefWidth="830.0">
         <items>
@@ -13,16 +16,13 @@
                         <tabs>
                             <Tab fx:id="tabBook" text="Book">
                            <content>
-                              <Pane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <Button fx:id="bookButton" layoutX="750.0" layoutY="454.0" mnemonicParsing="false" onAction="#onHelloButtonClick" text="Button" />
-                                    <Label fx:id="welcomeText" layoutX="226.0" layoutY="173.0" prefHeight="43.0" prefWidth="243.0" text="Label" />
-                                 </children>
-                              </Pane>
+                              <Pane prefHeight="200.0" prefWidth="200.0" />
                            </content></Tab>
-                            <Tab fx:id="tabMember" text="Member" />
+                            <Tab fx:id="tabMember" text="Member" >
+                                <fx:include source="Member.fxml" />
+                            </Tab>
                             <Tab fx:id="tabCheckout" text="Checkout Book">
-                            <fx:include source="CheckoutPage.fxml" />
+                                <fx:include source="CheckoutPage.fxml" />
                             </Tab>
                             <Tab fx:id="tabAddCopy" text="Add Copy" />
                         </tabs>
