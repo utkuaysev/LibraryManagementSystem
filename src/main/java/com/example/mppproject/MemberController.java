@@ -4,6 +4,7 @@ import business.LibraryMember;
 import dataaccess.DataAccessFacade;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,7 +41,6 @@ public class MemberController implements Initializable {
     @FXML
     TableColumn<MemberInfo, String> colZip;
 
-
     @FXML
     protected void onAddMemberClick() {
         System.out.println("Add member click");
@@ -51,14 +52,23 @@ public class MemberController implements Initializable {
             stg.setTitle("Add Library Member");
             stg.setScene(scene);
             stg.show();
+            stg.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent we) {
+                    // Refresh the parent window here
+                    initTableView();
+                }
+            });
         } catch (IOException ex) {
             System.out.println("Error in opening 'Add Member' page");
         }
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initTableView();
+    }
+
+    public void initTableView() {
         colMemberId.setCellValueFactory(new PropertyValueFactory<MemberInfo, String>("memberId"));
         colFirstName.setCellValueFactory(new PropertyValueFactory<MemberInfo, String>("firstName"));
         colLastName.setCellValueFactory(new PropertyValueFactory<MemberInfo, String>("lastName"));
@@ -67,7 +77,6 @@ public class MemberController implements Initializable {
         colCity.setCellValueFactory(new PropertyValueFactory<MemberInfo, String>("city"));
         colState.setCellValueFactory(new PropertyValueFactory<MemberInfo, String>("state"));
         colZip.setCellValueFactory(new PropertyValueFactory<MemberInfo, String>("zip"));
-
         tableView.setItems(getMembers());
     }
 
