@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
+import static business.SystemController.currentAuth;
+
 public class LoginPageController {
     @FXML
     private TextField usernameField;
@@ -41,7 +43,6 @@ public class LoginPageController {
             Parent root = FXMLLoader.load(MainPage.class.getResource("MainPage.fxml"));
             Scene scene = new Scene(root);
             Stage stg = new Stage();
-//            stg.setMaximized(true);
             stg.setTitle("Library Management System");
             stg.setScene(scene);
             stg.show();
