@@ -5,13 +5,17 @@ import business.LibraryMember;
 import dataaccess.DataAccessFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-public class AddMemberController {
+import java.net.URL;
+import java.util.*;
+
+public class AddMemberController implements Initializable {
 
     @FXML
     private Text messageBar;
@@ -39,6 +43,21 @@ public class AddMemberController {
 
     @FXML
     private TextField txtMemberPhone;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        DataAccessFacade dataAccessFacade = new DataAccessFacade();
+        HashMap<String, LibraryMember> memberHashMap = dataAccessFacade.readMemberMap();
+        List<LibraryMember> members = new ArrayList<>(memberHashMap.values());
+        members.sort(Comparator.comparing(LibraryMember::getMemberId));
+        if (members.size() > 0) {
+            int lastMemberId = Integer.parseInt(members.get(members.size()-1).getMemberId());
+            txtMemberID.setText(String.valueOf(lastMemberId+1));
+        } else {
+            txtMemberID.setText(String.valueOf(1001));
+        }
+    }
 
     @FXML
     void saveMember(ActionEvent event) {

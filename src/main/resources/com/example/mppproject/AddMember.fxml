@@ -20,7 +20,7 @@
       <Label layoutX="45.0" layoutY="306.0" text="City" />
       <Label layoutX="45.0" layoutY="345.0" text="State" />
       <Label layoutX="45.0" layoutY="384.0" text="Zip" />
-      <TextField fx:id="txtMemberID" layoutX="126.0" layoutY="46.0" prefHeight="31.0" prefWidth="226.0" promptText="Member Id">
+      <TextField fx:id="txtMemberID" editable="false" layoutX="126.0" layoutY="46.0" prefHeight="31.0" prefWidth="226.0" promptText="Member Id">
          <opaqueInsets>
             <Insets />
          </opaqueInsets></TextField>

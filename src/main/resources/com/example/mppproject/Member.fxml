@@ -8,7 +8,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.MemberController">
    <children>
       <Button fx:id="addMember" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#onAddMemberClick" text="Add Member" />
-      <TableView layoutX="14.0" layoutY="59.0" prefHeight="306.0" prefWidth="602.0" fx:id="tableView">
+      <TableView fx:id="tableView" layoutX="14.0" layoutY="59.0" prefHeight="306.0" prefWidth="602.0">
         <columns>
           <TableColumn fx:id="colMemberId" prefWidth="56.0" text="Id" />
           <TableColumn fx:id="colFirstName" prefWidth="73.0" text="Firstname" />
