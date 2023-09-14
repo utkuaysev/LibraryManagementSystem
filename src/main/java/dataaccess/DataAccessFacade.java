@@ -10,9 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import business.Book;
-import business.BookCopy;
 import business.LibraryMember;
-import dataaccess.DataAccessFacade.StorageType;
 
 
 public class DataAccessFacade implements DataAccess {
@@ -21,11 +19,18 @@ public class DataAccessFacade implements DataAccess {
 		BOOKS, MEMBERS, USERS;
 	}
 	
-	public static final String OUTPUT_DIR = System.getProperty("user.dir")
-//			+ "src/main/java/dataaccess/storage"; //for Unix file system
-			+ "\\src\\main\\java\\dataaccess\\storage"; //for Windows file system
+	private static String OUTPUT_DIR = System.getProperty("user.dir");
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
-	
+
+	static {
+		String os = System.getProperty("os.name");
+		if (os.toLowerCase().startsWith("windows")) {
+			OUTPUT_DIR += "\\src\\main\\java\\dataaccess\\storage";
+		} else {
+			OUTPUT_DIR += "/src/main/java/dataaccess/storage";
+		}
+	}
+
 	//implement: other save operations
 	public void saveNewMember(LibraryMember member) {
 		HashMap<String, LibraryMember> mems = readMemberMap();
