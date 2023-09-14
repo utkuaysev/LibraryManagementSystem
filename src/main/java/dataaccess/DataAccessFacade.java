@@ -22,8 +22,8 @@ public class DataAccessFacade implements DataAccess {
 	}
 	
 	public static final String OUTPUT_DIR = System.getProperty("user.dir")
-			+ "/src/dataaccess/storage"; //for Unix file system
-//			+ "\\src\\dataaccess\\storage"; //for Windows file system
+//			+ "src/main/java/dataaccess/storage"; //for Unix file system
+			+ "\\src\\main\\java\\dataaccess\\storage"; //for Windows file system
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
 	
 	//implement: other save operations
@@ -103,6 +103,7 @@ public class DataAccessFacade implements DataAccess {
 		ObjectInputStream in = null;
 		Object retVal = null;
 		try {
+			System.out.println(OUTPUT_DIR);
 			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, type.toString());
 			in = new ObjectInputStream(Files.newInputStream(path));
 			retVal = in.readObject();
