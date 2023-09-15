@@ -2,6 +2,7 @@ package com.example.mppproject;
 
 import business.CheckoutRecordEntry;
 import business.LibraryMember;
+import business.SystemController;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
 import javafx.collections.FXCollections;
@@ -57,8 +58,8 @@ public class OverdueController {
         String isbn = fieldISBN.getText().trim();
         if(isbn.isEmpty()) return;
 
-        DataAccess da = new DataAccessFacade();
-        HashMap<String, LibraryMember> records = da.readMemberMap();
+        SystemController sc = new SystemController();
+        HashMap<String, LibraryMember> records = sc.allMemberMap();
 
         for (LibraryMember lm : records.values()) {
             if (lm.getCheckoutRecord() != null) {
