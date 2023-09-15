@@ -14,5 +14,6 @@ public interface DataAccess {
 	void saveNewMember(LibraryMember member);
 	void saveAllMember(List<LibraryMember> memberList);
 	LibraryMember searchMember(String memberId);
-	Book searcBook(String isbnStr);
+	Book searchBook(String isbnStr);
+	void saveBook(Book book);
 }

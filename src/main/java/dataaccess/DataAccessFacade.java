@@ -48,7 +48,15 @@ public class DataAccessFacade implements DataAccess {
 	}
 
 	@Override
-	public Book searcBook(String isbnStr) {
+	public void saveBook(Book book) {
+		HashMap<String, Book> books = readBooksMap();
+		String isbn = book.getIsbn();
+		books.put(isbn, book);
+		saveToStorage(StorageType.BOOKS, books);
+	}
+
+	@Override
+	public Book searchBook(String isbnStr) {
 		HashMap<String, Book> bks = readBooksMap();
 		return bks!=null?(bks.containsKey(isbnStr)?bks.get(isbnStr):null):null;
 	}
