@@ -11,27 +11,27 @@
             <center>
                 <VBox prefHeight="555.0" prefWidth="580.0" BorderPane.alignment="CENTER">
                     <children>
-                        <TextField prefHeight="47.0" prefWidth="830.0" promptText="MemberId">
+                        <TextField fx:id="memberId" prefHeight="47.0" prefWidth="571.0" promptText="MemberId">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </TextField>
-                        <TextField prefHeight="48.0" prefWidth="830.0" promptText="ISBN">
+                        <TextField fx:id="isbn" prefHeight="48.0" prefWidth="830.0" promptText="ISBN">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </TextField>
-                        <Button fx:id="checkoutButton" defaultButton="true" mnemonicParsing="false" onAction="#clickedcheckoutButton" prefHeight="52.0" prefWidth="830.0" text="Checkout" textFill="#302e2e">
+                        <Button fx:id="checkoutButton" defaultButton="true" mnemonicParsing="false" prefHeight="52.0" prefWidth="830.0" text="Checkout" textFill="#302e2e">
                             <font>
                                 <Font size="21.0" />
                             </font>
                         </Button>
-                        <TableView prefHeight="400.0" prefWidth="830.0">
+                        <TableView fx:id="tableView" prefHeight="400.0" prefWidth="830.0">
                             <columns>
-                                <TableColumn prefWidth="177.60003048181534" text="Library Member" />
-                                <TableColumn prefWidth="184.80001831054688" text="Book Name" />
-                                <TableColumn maxWidth="293.6000061035156" minWidth="-1.0" prefWidth="245.5999755859375" text="CheckoutDate" />
-                                <TableColumn prefWidth="218.4000244140625" text="DueDate" />
+                                <TableColumn fx:id="isbnColumn"  prefWidth="177.60003048181534" text="ISBN" />
+                                <TableColumn fx:id="titleColumn" prefWidth="184.80001831054688" text="Book Title" />
+                                <TableColumn fx:id="checkoutDateColumn" maxWidth="293.6000061035156" minWidth="-1.0" prefWidth="245.5999755859375" text="CheckoutDate" />
+                                <TableColumn fx:id="dueDateColumn" prefWidth="218.4000244140625" text="DueDate" />
                             </columns>
                         </TableView>
                     </children>
