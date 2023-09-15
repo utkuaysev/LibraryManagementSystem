@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.HashMap;
 
@@ -49,7 +50,12 @@ public class EditMemberController {
 
     @FXML
     void cancel(ActionEvent event) {
+        closeWindow();
+    }
 
+    private void closeWindow() {
+        Stage stage = (Stage) btnMemberCancel.getScene().getWindow();
+        stage.close();
     }
 
     @FXML

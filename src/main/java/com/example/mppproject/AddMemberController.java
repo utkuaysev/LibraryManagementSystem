@@ -6,44 +6,39 @@ import dataaccess.DataAccessFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class AddMemberController implements Initializable {
-
+    @FXML
+    public Button btnMemberSave;
+    @FXML
+    public Button btnMemberCancel;
     @FXML
     private Text messageBar;
-
     @FXML
     private TextField txtMemberAddrCity;
-
     @FXML
     private TextField txtMemberAddrState;
-
     @FXML
     private TextField txtMemberAddrStr;
-
     @FXML
     private TextField txtMemberAddrZip;
-
     @FXML
     private TextField txtMemberFName;
-
     @FXML
     private TextField txtMemberID;
-
     @FXML
     private TextField txtMemberLName;
-
     @FXML
     private TextField txtMemberPhone;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -57,7 +52,7 @@ public class AddMemberController implements Initializable {
     }
 
     @FXML
-    void saveMember(ActionEvent event) {
+    void saveMember(ActionEvent event) throws InterruptedException {
         if (isMemberInfoInvalid()) {
             messageBar.setFill(Color.RED);;
             messageBar.setText("Fields can't be empty!");
@@ -73,7 +68,12 @@ public class AddMemberController implements Initializable {
 
     @FXML
     void cancel(ActionEvent event) {
+        closeWindow();
+    }
 
+    private void closeWindow() {
+        Stage stage = (Stage) btnMemberCancel.getScene().getWindow();
+        stage.close();
     }
 
     private boolean isMemberInfoInvalid() {

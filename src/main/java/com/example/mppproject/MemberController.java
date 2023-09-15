@@ -55,7 +55,7 @@ public class MemberController implements Initializable {
             stage.setScene(scene);
             stage.show();
 
-            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            stage.setOnHidden(new EventHandler<WindowEvent>() {
                 public void handle(WindowEvent we) {
                     // Refresh the parent window here
                     initTableView();
@@ -85,7 +85,7 @@ public class MemberController implements Initializable {
             stage.setTitle("Edit Library Member");
             stage.show();
 
-            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            stage.setOnHidden(new EventHandler<WindowEvent>() {
                 public void handle(WindowEvent we) {
                     // Refresh the parent window here
                     initTableView();
