@@ -11,19 +11,11 @@ public class CheckoutRecordEntry implements Serializable {
 
     private CheckoutRecord checkoutRecord;
 
-    public CheckoutRecordEntry(BookCopy bookCopy, LocalDate checkoutDate, LocalDate dueDate) {
+    public CheckoutRecordEntry(BookCopy bookCopy, LocalDate checkoutDate, LocalDate dueDate, CheckoutRecord checkoutRecord) {
         this.bookCopy = bookCopy;
         this.checkoutDate = checkoutDate;
         this.dueDate = dueDate;
-    }
-
-    public CheckoutRecordEntry() {
-
-    }
-
-    public static CheckoutRecordEntry createEntry(BookCopy bookCopy, LocalDate checkoutDate, LocalDate dueDate) {
-        CheckoutRecordEntry checkoutRecordEntry = new CheckoutRecordEntry(bookCopy, checkoutDate, dueDate);
-        return checkoutRecordEntry;
+        this.checkoutRecord = checkoutRecord;
     }
 
     public LocalDate getCheckoutDate() {
