@@ -57,7 +57,7 @@ public class RecordController {
     }
 
     public void searchCheckoutRecords(ActionEvent evt) {
-        System.out.println("---Searching Checkout data");
+        System.out.println("---Searching CheckoutRecord data");
         String memberID = btnSearchRecord.getText();
         if (memberID == null || memberID.equals("")) {
             return;
@@ -83,9 +83,7 @@ public class RecordController {
 //            }
         }
 
-        System.out.println(searchData);
-
-        tblCheckOutRecords.getItems().clear();
+//        tblCheckOutRecords.getItems().clear();
         tblCheckOutRecords.setItems(searchData);
     }
 

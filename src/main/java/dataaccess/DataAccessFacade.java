@@ -51,7 +51,8 @@ public class DataAccessFacade implements DataAccess {
 
     @Override
     public Book searchBook(String isbnStr) {
-        return null;
+        HashMap<String, Book> bks = readBooksMap();
+        return bks != null ? (bks.containsKey(isbnStr) ? bks.get(isbnStr) : null) : null;
     }
 
     @Override
@@ -169,7 +170,7 @@ public class DataAccessFacade implements DataAccess {
                 }
             }
         }
-        System.out.println(retVal);
+//        System.out.println(retVal);
         return retVal;
     }
 
