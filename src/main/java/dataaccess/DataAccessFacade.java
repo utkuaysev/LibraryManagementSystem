@@ -40,7 +40,18 @@ public class DataAccessFacade implements DataAccess {
 		mems.put(memberId, member);
 		saveToStorage(StorageType.MEMBERS, mems);	
 	}
-	
+
+	@Override
+	public LibraryMember searchMember(String memberId) {
+		HashMap<String, LibraryMember> memMap = readMemberMap();
+		return memMap!=null?memMap.get(memberId):null;
+	}
+
+	@Override
+	public Book searcBook(String isbnStr) {
+		HashMap<String, Book> bks = readBooksMap();
+		return bks!=null?(bks.containsKey(isbnStr)?bks.get(isbnStr):null):null;
+	}
 	@SuppressWarnings("unchecked")
 	public  HashMap<String,Book> readBooksMap() {
 		//Returns a Map with name/value pairs being
