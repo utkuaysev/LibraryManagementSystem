@@ -32,12 +32,6 @@ public class RecordController {
     @FXML
     private TableColumn<RecordInfo, String> clmDueDate;
     @FXML
-    private TableColumn<RecordInfo, String> clmHasReturned;
-    @FXML
-    private TableColumn<RecordInfo, String> clmReturnedDate;
-    @FXML
-    private TableColumn<RecordInfo, String> clmFineAmount;
-    @FXML
     private Button btnSearchRecord;
     @FXML
     private Button btnPrintRecord;
@@ -54,9 +48,6 @@ public class RecordController {
         clmMemberName.setCellValueFactory(new PropertyValueFactory<RecordInfo, String>("name"));
         clmCheckoutDate.setCellValueFactory(new PropertyValueFactory<RecordInfo, String>("outDate"));
         clmDueDate.setCellValueFactory(new PropertyValueFactory<RecordInfo, String>("dueDate"));
-        clmHasReturned.setCellValueFactory(new PropertyValueFactory<RecordInfo, String>("hasReturned"));
-        clmReturnedDate.setCellValueFactory(new PropertyValueFactory<RecordInfo, String>("returnedDate"));
-        clmFineAmount.setCellValueFactory(new PropertyValueFactory<RecordInfo, String>("fineAmount"));
     }
 
     public void searchCheckoutRecords(ActionEvent evt) {

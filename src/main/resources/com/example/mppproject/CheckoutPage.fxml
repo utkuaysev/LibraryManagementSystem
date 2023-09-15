@@ -11,7 +11,7 @@
             <center>
                 <VBox prefHeight="555.0" prefWidth="580.0" BorderPane.alignment="CENTER">
                     <children>
-                  <Label contentDisplay="CENTER" prefHeight="34.0" prefWidth="832.0" text="                                                               Member Id" textFill="#40396e" textOverrun="CLIP">
+                  <Label contentDisplay="CENTER" prefHeight="34.0" prefWidth="832.0" text="Member Id" textFill="#40396e" textOverrun="CLIP">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -21,7 +21,7 @@
                                 <Font size="18.0" />
                             </font>
                         </TextField>
-                  <Label prefHeight="18.0" prefWidth="829.0" text="                                                                    ISBN" textFill="#40396e">
+                  <Label prefHeight="18.0" prefWidth="829.0" text="ISBN" textFill="#40396e">
                      <font>
                         <Font size="21.0" />
                      </font>
