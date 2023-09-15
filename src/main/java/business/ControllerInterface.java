@@ -17,4 +17,6 @@ public interface ControllerInterface {
 	void saveAllMember(List<LibraryMember> memberList);
 	List<Book> allBooks();
 	void saveNewBook(Book book);
+	LibraryMember searchMember(String memberIdStr);
+	Book searchBook(String isbn);
 }

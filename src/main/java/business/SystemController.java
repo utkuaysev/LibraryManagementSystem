@@ -76,4 +76,15 @@ public class SystemController implements ControllerInterface {
 	public void saveNewBook(Book book) {
 		new DataAccessFacade().saveNewBook(book);
 	}
+
+	@Override
+	public LibraryMember searchMember(String memberIdStr) {
+		return new DataAccessFacade().searchMember(memberIdStr);
+	}
+
+	@Override
+	public Book searchBook(String isbn) {
+		return new DataAccessFacade().searchBook(isbn);
+	}
+
 }

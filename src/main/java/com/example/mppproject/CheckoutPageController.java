@@ -1,11 +1,6 @@
 package com.example.mppproject;
 
-import business.Book;
-import business.BookCopy;
-import business.CheckoutRecordEntry;
-import business.LibraryMember;
-import dataaccess.DataAccess;
-import dataaccess.DataAccessFacade;
+import business.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,10 +34,6 @@ public class CheckoutPageController {
     private Button checkoutButton;
 
 
-    private ObservableList<Checkout> data;
-
-    private DataAccess da = new DataAccessFacade();
-
     public static class Checkout {
         private String isbn;
         private String bookTitle;
@@ -75,6 +66,7 @@ public class CheckoutPageController {
 
     @FXML
     private void initialize() {
+        ControllerInterface systemController = new SystemController();
         ObservableList<Checkout> data = FXCollections.observableArrayList();
         tableView.setVisible(true);
         tableView.setItems(data);
@@ -84,10 +76,10 @@ public class CheckoutPageController {
         dueDateColumn.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
 
         checkoutButton.setOnAction((ActionEvent event) -> {
-            String isbnStr = isbn.getText();
             String memberIdStr = memberId.getText();
-            LibraryMember member = da.searchMember(memberIdStr);
-            Book book = da.searchBook(isbnStr);
+            String isbnStr = isbn.getText();
+            LibraryMember member = systemController.searchMember(memberIdStr);
+            Book book = systemController.searchBook(isbnStr);
             if (member == null) {
                 showError("No such member exists!");
                 return;
@@ -106,9 +98,8 @@ public class CheckoutPageController {
             int checkoutLength = book.getMaxCheckoutLength();
             CheckoutRecordEntry checkoutRecordEntry =
                     member.checkout(bookCopy, LocalDate.now(), LocalDate.now().plusDays(checkoutLength));
-            da.saveNewMember(member);
-            da.saveNewBook(book);
-            da.saveNewCheckoutRecordEntry(checkoutRecordEntry);
+            systemController.saveNewMember(member);
+            systemController.saveNewBook(book);
             showSuccess("Checkout succesfull");
             data.clear();
             for (CheckoutRecordEntry cr : member.getCheckoutRecord().getCheckoutRecordEntryList()) {

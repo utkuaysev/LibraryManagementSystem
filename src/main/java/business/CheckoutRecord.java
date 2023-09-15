@@ -10,11 +10,9 @@ public class CheckoutRecord implements Serializable {
 
     List<CheckoutRecordEntry> checkoutRecordEntryList;
 
-    LibraryMember member;
 
-    public CheckoutRecord(LibraryMember member) {
+    public CheckoutRecord() {
         checkoutRecordEntryList = new ArrayList<>();
-        this.member = member;
     }
     public void addEntry(CheckoutRecordEntry checkoutRecordEntry){
         checkoutRecordEntryList.add(checkoutRecordEntry);
@@ -25,11 +23,4 @@ public class CheckoutRecord implements Serializable {
         return checkoutRecordEntryList;
     }
 
-    public LibraryMember getMember() {
-        return member;
-    }
-
-    public void setMember(LibraryMember member) {
-        this.member = member;
-    }
 }

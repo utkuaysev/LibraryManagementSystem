@@ -76,20 +76,6 @@ public class DataAccessFacade implements DataAccess {
 				StorageType.MEMBERS);
 	}
 
-	@Override
-	public HashMap<String, CheckoutRecordEntry> readCheckoutRecordEntryMap() {
-		Object obo = readFromStorage(StorageType.RECORDS);
-		if (obo == null)
-			return new HashMap<String, CheckoutRecordEntry>();
-		return (HashMap<String, CheckoutRecordEntry>) readFromStorage(StorageType.RECORDS);
-	}
-	@Override
-	public void saveNewCheckoutRecordEntry(CheckoutRecordEntry entry) {
-		HashMap<String, CheckoutRecordEntry> recs = readCheckoutRecordEntryMap();
-		String recordId = entry.getCheckoutRecord().getMember().getMemberId() + " - " + entry.getBookCopy().getBook().getIsbn() + " - " + entry.getBookCopy().getCopyNum();
-		recs.put(recordId, entry);
-		saveToStorage(StorageType.RECORDS, recs);
-	}
 
 	@SuppressWarnings("unchecked")
 	public HashMap<String, User> readUserMap() {
