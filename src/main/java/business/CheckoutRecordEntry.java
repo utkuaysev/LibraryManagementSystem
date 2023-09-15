@@ -37,5 +37,15 @@ public class CheckoutRecordEntry implements Serializable {
     public void setCheckoutRecord(CheckoutRecord checkoutRecord) {
         this.checkoutRecord = checkoutRecord;
     }
+
+    @Override
+    public String toString() {
+        return "CheckoutRecordEntry{" +
+                "checkoutDate=" + checkoutDate +
+                ", dueDate=" + dueDate +
+                ", bookCopy=" + bookCopy +
+                ", checkoutRecord=" + checkoutRecord +
+                '}';
+    }
 }
 

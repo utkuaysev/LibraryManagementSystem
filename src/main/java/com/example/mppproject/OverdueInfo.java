@@ -56,4 +56,16 @@ public class OverdueInfo {
     public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
+
+    @Override
+    public String toString() {
+        return "OverdueInfo{" +
+                "isbn='" + isbn + '\'' +
+                ", copyNum='" + copyNum + '\'' +
+                ", title='" + title + '\'' +
+                ", memberId='" + memberId + '\'' +
+                ", name='" + name + '\'' +
+                ", dueDate='" + dueDate + '\'' +
+                '}';
+    }
 }

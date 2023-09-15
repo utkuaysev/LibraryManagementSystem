@@ -57,7 +57,7 @@ public class MainPageController {
                 tabCheckout.setDisable(false);
                 tabAddCopy.setDisable(true);
                 tabOverdue.setDisable(true);
-                tabRecord.setDisable(true);
+                tabRecord.setDisable(false);
                 tabPane.getSelectionModel().select(2);
                 break;
             case ADMIN:
@@ -66,7 +66,7 @@ public class MainPageController {
                 tabCheckout.setDisable(true);
                 tabAddCopy.setDisable(false);
                 tabOverdue.setDisable(false);
-                tabRecord.setDisable(false);
+                tabRecord.setDisable(true);
                 break;
             case BOTH:
                 tabMember.setDisable(false);
