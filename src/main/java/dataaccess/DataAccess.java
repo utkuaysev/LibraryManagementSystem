@@ -17,4 +17,6 @@ public interface DataAccess {
 	Book searchBook(String isbnStr);
 	void saveNewBook(Book book);
 	HashMap<String, CheckoutRecordEntry> readCheckoutRecordEntryMap();
+
+	void saveNewCheckoutRecordEntry(CheckoutRecordEntry entry);
 }

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonType?>
-<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -18,11 +17,21 @@
             <center>
                 <VBox prefHeight="555.0" prefWidth="580.0" BorderPane.alignment="CENTER">
                     <children>
+                  <Label contentDisplay="CENTER" prefHeight="34.0" prefWidth="832.0" text="                                                             Member Id" textFill="#40396e" textOverrun="CLIP">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
                         <TextField fx:id="memberId" prefHeight="42.0" prefWidth="830.0" promptText="MemberId">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </TextField>
+                  <Label prefHeight="18.0" prefWidth="829.0" text="                                                                 ISBN" textFill="#40396e">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
                         <TextField fx:id="isbn" prefHeight="48.0" prefWidth="830.0" promptText="ISBN">
                             <font>
                                 <Font size="18.0" />

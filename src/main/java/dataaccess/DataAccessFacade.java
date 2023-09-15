@@ -83,7 +83,7 @@ public class DataAccessFacade implements DataAccess {
 			return new HashMap<String, CheckoutRecordEntry>();
 		return (HashMap<String, CheckoutRecordEntry>) readFromStorage(StorageType.RECORDS);
 	}
-
+	@Override
 	public void saveNewCheckoutRecordEntry(CheckoutRecordEntry entry) {
 		HashMap<String, CheckoutRecordEntry> recs = readCheckoutRecordEntryMap();
 		String recordId = entry.getCheckoutRecord().getMember().getMemberId() + " - " + entry.getBookCopy().getBook().getIsbn() + " - " + entry.getBookCopy().getCopyNum();

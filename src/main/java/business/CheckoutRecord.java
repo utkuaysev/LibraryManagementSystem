@@ -12,11 +12,13 @@ public class CheckoutRecord implements Serializable {
 
     LibraryMember member;
 
-    public CheckoutRecord() {
+    public CheckoutRecord(LibraryMember member) {
         checkoutRecordEntryList = new ArrayList<>();
+        this.member = member;
     }
     public void addEntry(CheckoutRecordEntry checkoutRecordEntry){
         checkoutRecordEntryList.add(checkoutRecordEntry);
+        checkoutRecordEntry.setCheckoutRecord(this);
     }
 
     public List<CheckoutRecordEntry> getCheckoutRecordEntryList() {

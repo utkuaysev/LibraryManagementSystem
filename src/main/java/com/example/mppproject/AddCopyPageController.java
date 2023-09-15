@@ -70,10 +70,6 @@ public class AddCopyPageController {
                 showAlert("No such ISBN exists!");
                 return;
             }
-            if (!book.get().isAvailable()) {
-                showAlert("Book is not available!");
-                return;
-            }
             title.setText(book.get().getTitle());
             maxCheckoutLength.setText(String.valueOf(book.get().getMaxCheckoutLength()));
             data.clear();
