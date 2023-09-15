@@ -20,6 +20,6 @@
             <TableColumn fx:id="colZip" prefWidth="83.0" text="Zip" />
         </columns>
       </TableView>
-      <Button layoutX="577.0" layoutY="330.0" mnemonicParsing="false" text="Edit" />
+      <Button fx:id="editMember" layoutX="577.0" layoutY="330.0" mnemonicParsing="false" onAction="#onEditClick" text="Edit" />
    </children>
 </AnchorPane>

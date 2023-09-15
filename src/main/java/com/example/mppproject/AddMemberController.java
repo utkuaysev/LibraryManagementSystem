@@ -47,10 +47,7 @@ public class AddMemberController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        DataAccessFacade dataAccessFacade = new DataAccessFacade();
-        HashMap<String, LibraryMember> memberHashMap = dataAccessFacade.readMemberMap();
-        List<LibraryMember> members = new ArrayList<>(memberHashMap.values());
-        members.sort(Comparator.comparing(LibraryMember::getMemberId));
+        List<LibraryMember> members = new DataAccessFacade().getMembers();
         if (members.size() > 0) {
             int lastMemberId = Integer.parseInt(members.get(members.size()-1).getMemberId());
             txtMemberID.setText(String.valueOf(lastMemberId+1));

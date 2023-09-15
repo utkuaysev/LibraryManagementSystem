@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,7 +55,13 @@ public class DataAccessFacade implements DataAccess {
 		return (HashMap<String, LibraryMember>) readFromStorage(
 				StorageType.MEMBERS);
 	}
-	
+
+	public List<LibraryMember> getMembers() {
+		HashMap<String, LibraryMember> memberHashMap = readMemberMap();
+		List<LibraryMember> members = new ArrayList<>(memberHashMap.values());
+		members.sort(Comparator.comparing(LibraryMember::getMemberId));
+		return members;
+	}
 	
 	@SuppressWarnings("unchecked")
 	public HashMap<String, User> readUserMap() {
@@ -81,7 +89,7 @@ public class DataAccessFacade implements DataAccess {
 		saveToStorage(StorageType.USERS, users);
 	}
  
-	static void loadMemberMap(List<LibraryMember> memberList) {
+	public static void loadMemberMap(List<LibraryMember> memberList) {
 		HashMap<String, LibraryMember> members = new HashMap<String, LibraryMember>();
 		memberList.forEach(member -> members.put(member.getMemberId(), member));
 		saveToStorage(StorageType.MEMBERS, members);

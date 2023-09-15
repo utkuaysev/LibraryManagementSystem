@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,7 +22,10 @@ import java.net.URL;
 import java.util.*;
 
 public class MemberController implements Initializable {
-
+    @FXML
+    public Button editMember;
+    @FXML
+    public Button addMember;
     @FXML
     TableView<MemberInfo> tableView;
     @FXML
@@ -43,16 +47,15 @@ public class MemberController implements Initializable {
 
     @FXML
     protected void onAddMemberClick() {
-        System.out.println("Add member click");
-
         try {
-            Parent addMemberPage = FXMLLoader.load(AddMemberPage.class.getResource("Addmember.fxml"));
+            Parent addMemberPage = FXMLLoader.load(AddMemberPage.class.getResource("AddMember.fxml"));
             Scene scene = new Scene(addMemberPage);
-            Stage stg = new Stage();
-            stg.setTitle("Add Library Member");
-            stg.setScene(scene);
-            stg.show();
-            stg.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            Stage stage = new Stage();
+            stage.setTitle("Add Library Member");
+            stage.setScene(scene);
+            stage.show();
+
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 public void handle(WindowEvent we) {
                     // Refresh the parent window here
                     initTableView();
@@ -60,6 +63,37 @@ public class MemberController implements Initializable {
             });
         } catch (IOException ex) {
             System.out.println("Error in opening 'Add Member' page");
+            System.out.println(ex);
+        }
+    }
+
+    @FXML
+    protected void onEditClick() {
+        try {
+            MemberInfo memberInfo = tableView.getSelectionModel().getSelectedItem();
+            if (memberInfo == null) return;
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("EditMember.fxml"));
+            Parent root = (Parent) loader.load();
+
+            EditMemberController controller = loader.getController();
+            initEditWindow(controller, memberInfo);
+            loader.setController(controller);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Edit Library Member");
+            stage.show();
+
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent we) {
+                    // Refresh the parent window here
+                    initTableView();
+                }
+            });
+        } catch (IOException ex) {
+            System.out.println("Error in opening 'Edit Member' page");
+            System.out.println(ex);
         }
     }
 
@@ -82,11 +116,7 @@ public class MemberController implements Initializable {
 
     private ObservableList<MemberInfo> getMembers() {
         ObservableList<MemberInfo> memberList = FXCollections.observableArrayList();
-
-        DataAccessFacade dataAccessFacade = new DataAccessFacade();
-        HashMap<String, LibraryMember> memberHashMap = dataAccessFacade.readMemberMap();
-        List<LibraryMember> members = new ArrayList<>(memberHashMap.values());
-        members.sort(Comparator.comparing(LibraryMember::getMemberId));
+        List<LibraryMember> members = new DataAccessFacade().getMembers();
 
         // LibraryMember to memberInfo
         for (LibraryMember member: members) {
@@ -103,5 +133,16 @@ public class MemberController implements Initializable {
         }
 
         return memberList;
+    }
+
+    private void initEditWindow(EditMemberController controller, MemberInfo memberInfo) {
+        controller.txtMemberID.setText(memberInfo.getMemberId());
+        controller.txtMemberFName.setText(memberInfo.getFirstName());
+        controller.txtMemberLName.setText(memberInfo.getLastName());
+        controller.txtMemberPhone.setText(memberInfo.getTelephone());
+        controller.txtMemberAddrStr.setText(memberInfo.getStreet());
+        controller.txtMemberAddrCity.setText(memberInfo.getCity());
+        controller.txtMemberAddrState.setText(memberInfo.getState());
+        controller.txtMemberAddrZip.setText(memberInfo.getZip());
     }
 }
