@@ -1,8 +1,9 @@
 package com.example.mppproject;
 
 import business.Address;
+import business.ControllerInterface;
 import business.LibraryMember;
-import dataaccess.DataAccessFacade;
+import business.SystemController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,7 +43,8 @@ public class AddMemberController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<LibraryMember> members = new DataAccessFacade().getMembers();
+        ControllerInterface systemController = new SystemController();
+        List<LibraryMember> members = systemController.allMembers();
         if (members.size() > 0) {
             int lastMemberId = Integer.parseInt(members.get(members.size()-1).getMemberId());
             txtMemberID.setText(String.valueOf(lastMemberId+1));
@@ -59,8 +61,8 @@ public class AddMemberController implements Initializable {
             return;
         }
 
-        DataAccessFacade dataAccessFacade = new DataAccessFacade();
-        dataAccessFacade.saveNewMember(buildLibraryMember());
+        ControllerInterface systemController = new SystemController();
+        systemController.saveNewMember(buildLibraryMember());
 
         messageBar.setFill(Color.GREEN);;
         messageBar.setText("Saved Member Successfully");

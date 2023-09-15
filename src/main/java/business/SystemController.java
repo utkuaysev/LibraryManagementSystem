@@ -1,6 +1,7 @@
 package business;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,6 +41,30 @@ public class SystemController implements ControllerInterface {
 		retval.addAll(da.readBooksMap().keySet());
 		return retval;
 	}
-	
+
+	@Override
+	public List<LibraryMember> allMembers() {
+		DataAccessFacade dataAccessFacade = new DataAccessFacade();
+		HashMap<String, LibraryMember> memberHashMap = dataAccessFacade.readMemberMap();
+		List<LibraryMember> members = new ArrayList<>(memberHashMap.values());
+		members.sort(Comparator.comparing(LibraryMember::getMemberId));
+		return members;
+	}
+
+	@Override
+	public HashMap<String, LibraryMember> allMemberMap() {
+		return new DataAccessFacade().readMemberMap();
+	}
+
+	@Override
+	public void saveNewMember(LibraryMember member) {
+		new DataAccessFacade().saveNewMember(member);
+	}
+
+	@Override
+	public void saveAllMember(List<LibraryMember> memberList) {
+		new DataAccessFacade().saveAllMember(memberList);
+	}
+
 	
 }

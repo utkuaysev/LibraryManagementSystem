@@ -1,7 +1,7 @@
 package com.example.mppproject;
 
 import business.LibraryMember;
-import dataaccess.DataAccessFacade;
+import business.SystemController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -116,7 +116,7 @@ public class MemberController implements Initializable {
 
     private ObservableList<MemberInfo> getMembers() {
         ObservableList<MemberInfo> memberList = FXCollections.observableArrayList();
-        List<LibraryMember> members = new DataAccessFacade().getMembers();
+        List<LibraryMember> members = new SystemController().allMembers();
 
         // LibraryMember to memberInfo
         for (LibraryMember member: members) {

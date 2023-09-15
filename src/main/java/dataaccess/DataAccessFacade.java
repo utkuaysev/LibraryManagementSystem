@@ -55,13 +55,6 @@ public class DataAccessFacade implements DataAccess {
 		return (HashMap<String, LibraryMember>) readFromStorage(
 				StorageType.MEMBERS);
 	}
-
-	public List<LibraryMember> getMembers() {
-		HashMap<String, LibraryMember> memberHashMap = readMemberMap();
-		List<LibraryMember> members = new ArrayList<>(memberHashMap.values());
-		members.sort(Comparator.comparing(LibraryMember::getMemberId));
-		return members;
-	}
 	
 	@SuppressWarnings("unchecked")
 	public HashMap<String, User> readUserMap() {
@@ -69,7 +62,11 @@ public class DataAccessFacade implements DataAccess {
 		//   userId -> User
 		return (HashMap<String, User>)readFromStorage(StorageType.USERS);
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	public void saveAllMember(List<LibraryMember> memberList) {
+		loadMemberMap(memberList);
+	}
 	
 	/////load methods - these place test data into the storage area
 	///// - used just once at startup  
@@ -89,7 +86,7 @@ public class DataAccessFacade implements DataAccess {
 		saveToStorage(StorageType.USERS, users);
 	}
  
-	public static void loadMemberMap(List<LibraryMember> memberList) {
+	static void loadMemberMap(List<LibraryMember> memberList) {
 		HashMap<String, LibraryMember> members = new HashMap<String, LibraryMember>();
 		memberList.forEach(member -> members.put(member.getMemberId(), member));
 		saveToStorage(StorageType.MEMBERS, members);

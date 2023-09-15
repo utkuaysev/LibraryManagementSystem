@@ -1,8 +1,9 @@
 package com.example.mppproject;
 
 import business.Address;
+import business.ControllerInterface;
 import business.LibraryMember;
-import dataaccess.DataAccessFacade;
+import business.SystemController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -66,13 +67,13 @@ public class EditMemberController {
             return;
         }
 
-        DataAccessFacade dataAccessFacade = new DataAccessFacade();
-        HashMap<String, LibraryMember> members = dataAccessFacade.readMemberMap();
+        ControllerInterface systemController = new SystemController();
+        HashMap<String, LibraryMember> members = systemController.allMemberMap();
         LibraryMember editedMember = buildLibraryMember();
 
         // update member map
         members.put(editedMember.getMemberId(), editedMember);
-        DataAccessFacade.loadMemberMap(members.values().stream().toList());
+        systemController.saveAllMember(members.values().stream().toList());
 
         messageBar.setFill(Color.GREEN);;
         messageBar.setText("Saved Member Successfully");
