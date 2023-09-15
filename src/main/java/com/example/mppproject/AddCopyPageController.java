@@ -2,6 +2,8 @@ package com.example.mppproject;
 
 import business.Book;
 import business.BookCopy;
+import business.ControllerInterface;
+import business.SystemController;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
 import javafx.collections.FXCollections;
@@ -36,7 +38,6 @@ public class AddCopyPageController {
 
     private ObservableList<BookCopyInfo> data;
 
-    private DataAccess da = new DataAccessFacade();
 
     public static class BookCopyInfo {
         private String copyNum;
@@ -58,14 +59,14 @@ public class AddCopyPageController {
 
 
     public void initialize() {
+        ControllerInterface systemController = new SystemController();
         ObservableList<BookCopyInfo> data = FXCollections.observableArrayList();
-        tableView.setVisible(true);
         tableView.setItems(data);
         copyNumColumn.setCellValueFactory(new PropertyValueFactory<>("copyNum"));
         isAvailableColumn.setCellValueFactory(new PropertyValueFactory<>("isAvailable"));
         AtomicReference<Book> book = new AtomicReference<>();
         lookUpButton.setOnAction((ActionEvent event) -> {
-            book.set(da.searchBook(isbn.getText()));
+            book.set(systemController.searchBook(isbn.getText()));
             if (book.get() == null) {
                 showAlert("No such ISBN exists!");
                 return;
@@ -83,7 +84,7 @@ public class AddCopyPageController {
                 return;
             }
             book.get().addCopy();
-            da.saveNewBook(book.get());
+            systemController.saveNewBook(book.get());
             showSuccess("Copy is saved");
             data.clear();
             for (BookCopy bookCopy : book.get().getCopies()) {
