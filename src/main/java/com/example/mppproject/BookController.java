@@ -6,13 +6,20 @@ import business.SystemController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -47,7 +54,24 @@ public class BookController implements Initializable {
 
     @FXML
     void onAddBookClick(ActionEvent event) {
+        try {
+            Parent addBookPage = FXMLLoader.load(AddBookPage.class.getResource("AddBookPage.fxml"));
+            Scene scene = new Scene(addBookPage);
+            Stage stage = new Stage();
+            stage.setTitle("Add Book");
+            stage.setScene(scene);
+            stage.show();
 
+            stage.setOnHidden(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent we) {
+                    // Refresh the parent window here
+                    initTableView();
+                }
+            });
+        } catch (IOException ex) {
+            System.out.println("Error in opening 'Add Book' page");
+            System.out.println(ex);
+        }
     }
 
     public void initTableView() {

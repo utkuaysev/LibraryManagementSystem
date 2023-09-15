@@ -16,4 +16,5 @@ public interface ControllerInterface {
 	void saveNewMember(LibraryMember member);
 	void saveAllMember(List<LibraryMember> memberList);
 	List<Book> allBooks();
+	void saveNewBook(Book book);
 }

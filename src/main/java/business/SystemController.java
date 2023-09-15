@@ -71,4 +71,9 @@ public class SystemController implements ControllerInterface {
 		HashMap<String, Book> booksMap = new DataAccessFacade().readBooksMap();
 		return booksMap.values().stream().toList();
 	}
+
+	@Override
+	public void saveNewBook(Book book) {
+		new DataAccessFacade().saveNewBook(book);
+	}
 }

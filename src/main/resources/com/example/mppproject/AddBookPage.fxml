@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.AddBookController">
+   <children>
+      <Label layoutX="74.0" layoutY="64.0" text="Title" />
+      <TextField fx:id="titleField" layoutX="152.0" layoutY="61.0" prefHeight="26.0" prefWidth="255.0" promptText="Title" />
+      <TextField fx:id="isbnField" layoutX="152.0" layoutY="96.0" prefHeight="26.0" prefWidth="255.0" promptText="ISBN" />
+      <Label layoutX="74.0" layoutY="101.0" text="ISBN" />
+      <Label layoutX="73.0" layoutY="135.0" text="Checkout" />
+      <ComboBox fx:id="checkoutDropdown" layoutX="152.0" layoutY="130.0" prefHeight="26.0" prefWidth="255.0" promptText="Select Max Checkout Length" visibleRowCount="5" />
+      <Label layoutX="204.0" layoutY="14.0" prefHeight="26.0" prefWidth="110.0" style="-fx-font-size: 20;" text="Add Book" textAlignment="CENTER" textFill="#3284c3" />
+      <Label layoutX="74.0" layoutY="174.0" text="Author" />
+      <AnchorPane layoutX="74.0" layoutY="198.0" prefHeight="367.0" prefWidth="345.0" style="-fx-background-color: #ffe;">
+         <children>
+            <Label layoutX="10.0" layoutY="20.0" text="Firstname" />
+            <Label layoutX="11.0" layoutY="53.0" text="Lastname" />
+            <Label layoutX="11.0" layoutY="87.0" text="Phone" />
+            <Label layoutX="11.0" layoutY="122.0" text="Street" />
+            <Label layoutX="11.0" layoutY="156.0" text="City" />
+            <Label layoutX="11.0" layoutY="191.0" text="State" />
+            <Label layoutX="13.0" layoutY="226.0" text="Zip" />
+            <Label layoutX="13.0" layoutY="264.0" text="Bio" />
+            <TextField fx:id="authorFname" layoutX="78.0" layoutY="16.0" prefHeight="26.0" prefWidth="255.0" promptText="Firstname" />
+            <TextField fx:id="authorLname" layoutX="78.0" layoutY="50.0" prefHeight="26.0" prefWidth="255.0" promptText="Lastname" />
+            <TextField fx:id="authorStreet" layoutX="78.0" layoutY="119.0" prefHeight="26.0" prefWidth="255.0" promptText="Street" />
+            <TextField fx:id="authorPhone" layoutX="78.0" layoutY="84.0" prefHeight="26.0" prefWidth="255.0" promptText="Phone" />
+            <TextField fx:id="authorCity" layoutX="78.0" layoutY="153.0" prefHeight="26.0" prefWidth="255.0" promptText="City" />
+            <TextField fx:id="authorState" layoutX="78.0" layoutY="187.0" prefHeight="26.0" prefWidth="255.0" promptText="State" />
+            <TextField fx:id="authorZip" layoutX="78.0" layoutY="222.0" prefHeight="26.0" prefWidth="255.0" promptText="Zip" />
+            <Button fx:id="addAuthorButton" layoutX="291.0" layoutY="334.0" mnemonicParsing="false" onAction="#onAddAuthorClick" text="Add" />
+         </children>
+      </AnchorPane>
+      <TextArea fx:id="authorBio" layoutX="151.0" layoutY="451.0" prefHeight="74.0" prefWidth="255.0" promptText="Bio" />
+      <Button fx:id="saveBook" layoutX="428.0" layoutY="575.0" mnemonicParsing="false" onAction="#onSaveBookClick" text="Save" />
+      <Button fx:id="cancel" layoutX="365.0" layoutY="575.0" mnemonicParsing="false" onAction="#onCancelBookClick" text="Cancel" />
+      <ComboBox layoutX="151.0" layoutY="166.0" prefHeight="26.0" prefWidth="255.0" promptText="Author List" />
+      <Text fx:id="messageBar" layoutX="8.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="338.21630859375" />
+   </children>
+</AnchorPane>
