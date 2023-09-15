@@ -15,5 +15,5 @@ public interface ControllerInterface {
 	HashMap<String, LibraryMember> allMemberMap();
 	void saveNewMember(LibraryMember member);
 	void saveAllMember(List<LibraryMember> memberList);
-	
+	List<Book> allBooks();
 }
