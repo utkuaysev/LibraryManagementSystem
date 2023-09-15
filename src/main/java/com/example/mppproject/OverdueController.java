@@ -1,5 +1,6 @@
 package com.example.mppproject;
 
+import business.Book;
 import business.CheckoutRecordEntry;
 import business.LibraryMember;
 import business.SystemController;
@@ -57,23 +58,28 @@ public class OverdueController {
         System.out.println("--- Searching for Overdue Checkouts");
         String isbn = fieldISBN.getText().trim();
         if(isbn.isEmpty()) return;
-
+        searchData.clear();
         SystemController sc = new SystemController();
         HashMap<String, LibraryMember> records = sc.allMemberMap();
+
+        Book searchedBook = sc.searchBook(isbn);
 
         for (LibraryMember lm : records.values()) {
             if (lm.getCheckoutRecord() != null) {
                 LibraryMember memberInfo = lm;
                 List<CheckoutRecordEntry> a = memberInfo.getCheckoutRecord().getCheckoutRecordEntryList();
+
                 for (CheckoutRecordEntry record : a) {
-                    if (record.getBookCopy().getBook().getIsbn().equals(isbn) && record.getDueDate().isBefore(LocalDate.now()) && !record.getBookCopy().getBook().isAvailable()) {
+                    System.out.println(record);
+                    if (record.getBookCopy().getBook().getIsbn().equals(isbn) && record.getDueDate().isBefore(LocalDate.now()) && !searchedBook.isAvailable()) {
                         OverdueInfo br = new OverdueInfo();
                         br.setIsbn(record.getBookCopy().getBook().getIsbn());
                         br.setTitle(record.getBookCopy().getBook().getTitle());
                         br.setCopyNum(String.valueOf(record.getBookCopy().getCopyNum()));
-                        br.setMemberId(isbn);
+                        br.setMemberId(memberInfo.getMemberId());
                         br.setName(memberInfo.getFirstName() + " " + memberInfo.getLastName());
                         br.setDueDate(String.valueOf(record.getDueDate()));
+//                        System.out.println(br);
                         searchData.add(br);
                     }
                 }
