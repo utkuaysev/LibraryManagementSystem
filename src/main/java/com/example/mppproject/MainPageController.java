@@ -10,6 +10,7 @@ import javafx.scene.control.TabPane;
 import static business.SystemController.currentAuth;
 
 public class MainPageController {
+
     @FXML
     private TabPane tabPane;
     @FXML
@@ -20,6 +21,10 @@ public class MainPageController {
     private Tab tabCheckout;
     @FXML
     private Tab tabAddCopy;
+    @FXML
+    private Tab tabOverdue;
+    @FXML
+    public Tab tabRecord;
 
 
     @FXML
@@ -39,6 +44,8 @@ public class MainPageController {
         tabMember.setDisable(true);
         tabCheckout.setDisable(true);
         tabAddCopy.setDisable(true);
+        tabOverdue.setDisable(true);
+        tabRecord.setDisable(true);
     }
 
     private void checkAuth() {
@@ -49,6 +56,8 @@ public class MainPageController {
                 tabBook.setDisable(true);
                 tabCheckout.setDisable(false);
                 tabAddCopy.setDisable(true);
+                tabOverdue.setDisable(true);
+                tabRecord.setDisable(true);
                 tabPane.getSelectionModel().select(2);
                 break;
             case ADMIN:
@@ -56,26 +65,17 @@ public class MainPageController {
                 tabBook.setDisable(false);
                 tabCheckout.setDisable(true);
                 tabAddCopy.setDisable(false);
+                tabOverdue.setDisable(false);
+                tabRecord.setDisable(false);
                 break;
             case BOTH:
                 tabMember.setDisable(false);
                 tabBook.setDisable(false);
                 tabCheckout.setDisable(false);
                 tabAddCopy.setDisable(false);
+                tabOverdue.setDisable(false);
+                tabRecord.setDisable(false);
                 break;
         }
-    }
-
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-
-
-    }
-
-    @FXML
-    protected void callBlah() {
-        welcomeText.setText("Welcome to JavaFX Application!");
     }
 }

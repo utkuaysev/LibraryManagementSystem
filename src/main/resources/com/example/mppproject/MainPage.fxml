@@ -14,16 +14,22 @@
                <children>
                     <TabPane fx:id="tabPane" prefHeight="500.0" prefWidth="830.0" tabClosingPolicy="UNAVAILABLE">
                         <tabs>
-                            <Tab fx:id="tabMember" text="Member">
-                                <fx:include source="Member.fxml" />
-                            </Tab>
                             <Tab fx:id="tabBook" text="Book">
                            <content>
                               <Pane prefHeight="200.0" prefWidth="200.0" />
                            </content></Tab>
-                            <Tab fx:id="tabAddCopy" text="Add Copy" />
+                            <Tab fx:id="tabMember" text="Member" >
+                                <fx:include source="Member.fxml" />
+                            </Tab>
                             <Tab fx:id="tabCheckout" text="Checkout Book">
                                 <fx:include source="CheckoutPage.fxml" />
+                            </Tab>
+                            <Tab fx:id="tabAddCopy" text="Add Copy" />
+                            <Tab fx:id="tabOverdue" text="Overdue">
+                                <fx:include source="Overdue.fxml" />
+                            </Tab>
+                            <Tab fx:id="tabRecord" text="Record">
+                                <fx:include source="Record.fxml" />
                             </Tab>
                         </tabs>
                     </TabPane>
