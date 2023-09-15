@@ -1,6 +1,6 @@
-package business;
+package com.example.mppproject;
 
-public class BookRecords {
+public class RecordInfo {
 	private String isbn;
 	private String copyNum;
 	private String title;

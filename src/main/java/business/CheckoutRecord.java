@@ -10,6 +10,8 @@ public class CheckoutRecord implements Serializable {
 
     List<CheckoutRecordEntry> checkoutRecordEntryList;
 
+    LibraryMember member;
+
     public CheckoutRecord() {
         checkoutRecordEntryList = new ArrayList<>();
     }
@@ -19,5 +21,13 @@ public class CheckoutRecord implements Serializable {
 
     public List<CheckoutRecordEntry> getCheckoutRecordEntryList() {
         return checkoutRecordEntryList;
+    }
+
+    public LibraryMember getMember() {
+        return member;
+    }
+
+    public void setMember(LibraryMember member) {
+        this.member = member;
     }
 }
