@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.OverdueController">
@@ -11,11 +10,11 @@
         <TableView fx:id="tblOverdueCheckout" layoutX="14.0" layoutY="86.0" prefHeight="388.0" prefWidth="800.0">
             <columns>
                 <TableColumn fx:id="clmISBN" text="ISBN" />
-                <TableColumn fx:id="clmTitle" text="Title" />
-                <TableColumn fx:id="clmCopyNum" text="Copy Num" />
-                <TableColumn fx:id="clmDueDate" text="Due Date" />
-                <TableColumn fx:id="clmMemberId" text="Member Id" />
-                <TableColumn fx:id="clmMemberName" text="Member Name" />
+                <TableColumn fx:id="clmTitle" prefWidth="116.0" text="Title" />
+                <TableColumn fx:id="clmCopyNum" prefWidth="120.0" text="Copy Num" />
+                <TableColumn fx:id="clmDueDate" prefWidth="143.0" text="Due Date" />
+                <TableColumn fx:id="clmMemberId" prefWidth="115.0" text="Member Id" />
+                <TableColumn fx:id="clmMemberName" prefWidth="225.0" text="Member Name" />
             </columns>
         </TableView>
     </children>

@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -40,6 +41,8 @@ public class RecordController {
     private Button btnSearchRecord;
     @FXML
     private Button btnPrintRecord;
+    @FXML
+    private TextField txtRecordMemberId;
 
     ObservableList<RecordInfo> searchData = FXCollections.observableArrayList();
 
@@ -58,31 +61,33 @@ public class RecordController {
 
     public void searchCheckoutRecords(ActionEvent evt) {
         System.out.println("---Searching CheckoutRecord data");
-        String memberID = btnSearchRecord.getText();
+        String memberID = txtRecordMemberId.getText();
         if (memberID == null || memberID.equals("")) {
             return;
         }
         searchData.clear();
 
         DataAccess da = new DataAccessFacade();
-        HashMap<String, CheckoutRecordEntry> records = da.readCheckoutRecordEntryMap();
-        for (CheckoutRecordEntry co : records.values()) {
-            RecordInfo br = new RecordInfo();
-//            if (co.getCheckoutRecord().getMember().getMemberId().equals(memberID)) {
-            br.setIsbn("1");
-            br.setCopyNum("1");
-            br.setTitle("1");
-            br.setMemberId("1");
-            br.setName("1");
-            br.setOutDate("1");
-            br.setDueDate("1");
-            br.setHasReturned("1");
-            br.setFineAmount("1");
-            br.setReturnedDate("1");
-            searchData.add(br);
-//            }
-        }
+        HashMap<String, LibraryMember> records = da.readMemberMap();
 
+        for (LibraryMember lm : records.values()) {
+            if (lm.getCheckoutRecord() != null && lm.getMemberId().equals(memberID)) {
+                LibraryMember memberInfo = lm;
+                List<CheckoutRecordEntry> a = memberInfo.getCheckoutRecord().getCheckoutRecordEntryList();
+                for (CheckoutRecordEntry record : a) {
+                    RecordInfo br = new RecordInfo();
+                    br.setIsbn(record.getBookCopy().getBook().getIsbn());
+                    br.setCopyNum(String.valueOf(record.getBookCopy().getCopyNum()));
+                    br.setTitle(record.getBookCopy().getBook().getTitle());
+                    br.setMemberId(memberID);
+                    br.setName(memberInfo.getFirstName() + " " + memberInfo.getLastName());
+                    br.setOutDate(String.valueOf(record.getCheckoutDate()));
+                    br.setDueDate(String.valueOf(record.getDueDate()));
+                    searchData.add(br);
+                }
+            }
+
+        }
 //        tblCheckOutRecords.getItems().clear();
         tblCheckOutRecords.setItems(searchData);
     }

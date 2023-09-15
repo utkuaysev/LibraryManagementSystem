@@ -55,24 +55,30 @@ public class OverdueController {
     public void searchOverDueCheckout(ActionEvent actionEvent) {
         System.out.println("--- Searching for Overdue Checkouts");
         String isbn = fieldISBN.getText().trim();
-//        if(isbn.isEmpty()) return;
+        if(isbn.isEmpty()) return;
 
         DataAccess da = new DataAccessFacade();
-        HashMap<String, CheckoutRecordEntry> records = da.readCheckoutRecordEntryMap();
+        HashMap<String, LibraryMember> records = da.readMemberMap();
 
-        for (CheckoutRecordEntry co : records.values()) {
-//            if(co.getDueDate().isBefore(LocalDate.now()) && !co.getBookCopy().getBook().isAvailable()) {
-            OverdueInfo overdue = new OverdueInfo();
-            overdue.setIsbn("1");
-            overdue.setDueDate("1");
-            overdue.setCopyNum("1");
-            overdue.setMemberId("1");
-            overdue.setTitle("1");
-            overdue.setName("1");
-            searchData.add(overdue);
-//            }
+        for (LibraryMember lm : records.values()) {
+            if (lm.getCheckoutRecord() != null) {
+                LibraryMember memberInfo = lm;
+                List<CheckoutRecordEntry> a = memberInfo.getCheckoutRecord().getCheckoutRecordEntryList();
+                for (CheckoutRecordEntry record : a) {
+                    if (record.getBookCopy().getBook().getIsbn().equals(isbn) && record.getDueDate().isBefore(LocalDate.now()) && !record.getBookCopy().getBook().isAvailable()) {
+                        OverdueInfo br = new OverdueInfo();
+                        br.setIsbn(record.getBookCopy().getBook().getIsbn());
+                        br.setTitle(record.getBookCopy().getBook().getTitle());
+                        br.setCopyNum(String.valueOf(record.getBookCopy().getCopyNum()));
+                        br.setMemberId(isbn);
+                        br.setName(memberInfo.getFirstName() + " " + memberInfo.getLastName());
+                        br.setDueDate(String.valueOf(record.getDueDate()));
+                        searchData.add(br);
+                    }
+                }
+            }
+
         }
-
         tblOverdueCheckout.setItems(searchData);
     }
 }

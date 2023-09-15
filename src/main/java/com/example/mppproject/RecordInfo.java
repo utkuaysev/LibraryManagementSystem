@@ -8,9 +8,6 @@ public class RecordInfo {
 	private String name;
 	private String outDate;
 	private String dueDate;
-	private String hasReturned;
-	private String fineAmount;
-	private String returnedDate;
 
 	public String getIsbn() {
 		return isbn;
@@ -68,30 +65,6 @@ public class RecordInfo {
 		this.dueDate = dueDate;
 	}
 
-	public String getHasReturned() {
-		return hasReturned;
-	}
-
-	public void setHasReturned(String hasReturned) {
-		this.hasReturned = hasReturned;
-	}
-
-	public String getFineAmount() {
-		return fineAmount;
-	}
-
-	public void setFineAmount(String fineAmount) {
-		this.fineAmount = fineAmount;
-	}
-
-	public String getReturnedDate() {
-		return returnedDate;
-	}
-
-	public void setReturnedDate(String returnedDate) {
-		this.returnedDate = returnedDate;
-	}
-
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -115,12 +88,6 @@ public class RecordInfo {
 		sb.append("\n\t");
 		sb.append("Due Date: " + dueDate);
 
-		sb.append("\n\t");
-		sb.append("Returned?: " + hasReturned);
-		sb.append("\n\t");
-		sb.append("Fine: " + fineAmount);
-		sb.append("\n\t");
-		sb.append("Returned Date: " + returnedDate);
 		return sb.toString();
 	}
 

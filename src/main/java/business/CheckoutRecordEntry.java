@@ -21,7 +21,7 @@ public class CheckoutRecordEntry implements Serializable {
 
     }
 
-    public static CheckoutRecordEntry createEntry(BookCopy bookCopy, LocalDate checkoutDate, LocalDate dueDate){
+    public static CheckoutRecordEntry createEntry(BookCopy bookCopy, LocalDate checkoutDate, LocalDate dueDate) {
         CheckoutRecordEntry checkoutRecordEntry = new CheckoutRecordEntry(bookCopy, checkoutDate, dueDate);
         return checkoutRecordEntry;
     }
