@@ -34,12 +34,10 @@ final public class LibraryMember extends Person implements Serializable {
 
 	private static final long serialVersionUID = -2226197306790714013L;
 
-    public CheckoutRecordEntry checkout(BookCopy bookCopy, LocalDate checkoutDate, LocalDate dueDate) {
-		CheckoutRecordEntry checkoutRecordEntry = CheckoutRecordEntry.createEntry(bookCopy, checkoutDate, dueDate);
+    public void checkout(BookCopy bookCopy, LocalDate checkoutDate, LocalDate dueDate) {
 		if(checkoutRecord == null){
 			checkoutRecord = new CheckoutRecord();
 		}
-		checkoutRecord.addEntry(checkoutRecordEntry);
-		return checkoutRecordEntry;
+		checkoutRecord.addEntry(bookCopy, checkoutDate, dueDate);
     }
 }

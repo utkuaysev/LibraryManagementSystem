@@ -96,8 +96,7 @@ public class CheckoutPageController {
             BookCopy bookCopy = book.getNextAvailableCopy();
             bookCopy.changeAvailability();
             int checkoutLength = book.getMaxCheckoutLength();
-            CheckoutRecordEntry checkoutRecordEntry =
-                    member.checkout(bookCopy, LocalDate.now(), LocalDate.now().plusDays(checkoutLength));
+            member.checkout(bookCopy, LocalDate.now(), LocalDate.now().plusDays(checkoutLength));
             systemController.saveNewMember(member);
             systemController.saveNewBook(book);
             showSuccess("Checkout succesfull");
