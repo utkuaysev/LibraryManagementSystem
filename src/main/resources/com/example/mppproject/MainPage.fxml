@@ -22,8 +22,10 @@
                             <Tab fx:id="tabCheckout" text="Checkout Book">
                                 <fx:include source="CheckoutPage.fxml" />
                             </Tab>
-                            <Tab fx:id="tabAddCopy" text="Add Copy" />
-                            <Tab fx:id="tabOverdue" text="Overdue">
+                            <Tab fx:id="tabAddCopy" text="Add Copy" >
+                                <fx:include source="AddCopyPage.fxml" />
+                            </Tab>
+                        <Tab fx:id="tabOverdue" text="Overdue">
                                 <fx:include source="Overdue.fxml" />
                             </Tab>
                             <Tab fx:id="tabRecord" text="Record">

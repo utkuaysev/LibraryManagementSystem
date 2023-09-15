@@ -9,11 +9,18 @@ public class CheckoutRecordEntry implements Serializable {
     private LocalDate dueDate;
     private BookCopy bookCopy;
 
-    private CheckoutRecordEntry(BookCopy bookCopy, LocalDate checkoutDate, LocalDate dueDate) {
+    private CheckoutRecord checkoutRecord;
+
+    public CheckoutRecordEntry(BookCopy bookCopy, LocalDate checkoutDate, LocalDate dueDate) {
         this.bookCopy = bookCopy;
         this.checkoutDate = checkoutDate;
         this.dueDate = dueDate;
     }
+
+    public CheckoutRecordEntry() {
+
+    }
+
     public static CheckoutRecordEntry createEntry(BookCopy bookCopy, LocalDate checkoutDate, LocalDate dueDate){
         CheckoutRecordEntry checkoutRecordEntry = new CheckoutRecordEntry(bookCopy, checkoutDate, dueDate);
         return checkoutRecordEntry;
@@ -29,6 +36,14 @@ public class CheckoutRecordEntry implements Serializable {
 
     public BookCopy getBookCopy() {
         return bookCopy;
+    }
+
+    public CheckoutRecord getCheckoutRecord() {
+        return checkoutRecord;
+    }
+
+    public void setCheckoutRecord(CheckoutRecord checkoutRecord) {
+        this.checkoutRecord = checkoutRecord;
     }
 }
 

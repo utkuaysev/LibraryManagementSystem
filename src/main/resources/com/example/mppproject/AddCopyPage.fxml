@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0"
+            prefWidth="830.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.mppproject.AddCopyPageController">
+    <children>
+
+        <BorderPane prefHeight="600.0" prefWidth="830.0">
+            <center>
+                <VBox prefHeight="555.0" prefWidth="580.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <TextField fx:id="isbn" prefHeight="48.0" prefWidth="830.0" promptText="ISBN">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </TextField>
+                        <Button id="lookUpButton" fx:id="lookUpButton" defaultButton="true" mnemonicParsing="false"
+                                prefHeight="52.0" prefWidth="830.0" text="Look Up" textFill="#302e2e">
+                            <font>
+                                <Font size="21.0"/>
+                            </font>
+                        </Button>
+                        <TextField id="title" fx:id="title" prefHeight="50.0" prefWidth="830.0" promptText="Title" editable="false">
+                            <font>
+                                <Font size="21.0"/>
+                            </font>
+                        </TextField>
+                        <TextField id="maxCheckoutLength" fx:id="maxCheckoutLength" prefHeight="49.0" prefWidth="830.0"
+                                   promptText="Max Checkout Length" editable="false">
+                            <font>
+                                <Font size="21.0"/>
+                            </font>
+                        </TextField>
+                        <TableView id="tableView" fx:id="tableView" prefHeight="349.0" prefWidth="830.0">
+                            <columns>
+                                <TableColumn id="copyNumColumn" fx:id="copyNumColumn" prefWidth="384.79995119571686"
+                                             text="Copy Num"/>
+                                <TableColumn id="isAvailableColumn" fx:id="isAvailableColumn" prefWidth="437.6001281738281" text="Is Available"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+        <Button fx:id="addCopyButton" defaultButton="true" layoutX="7.0" layoutY="553.0" mnemonicParsing="false"
+                prefHeight="60.0" prefWidth="830.0" text="Add Copy">
+            <font>
+                <Font size="21.0"/>
+            </font>
+        </Button>
+
+    </children>
+</AnchorPane>
