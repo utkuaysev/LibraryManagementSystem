@@ -12,13 +12,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import business.Book;
+import business.CheckoutRecordEntry;
 import business.LibraryMember;
 
 
 public class DataAccessFacade implements DataAccess {
 	
 	enum StorageType {
-		BOOKS, MEMBERS, USERS;
+		BOOKS, MEMBERS, USERS, RECORDS;
 	}
 	
 	private static String OUTPUT_DIR = System.getProperty("user.dir");
@@ -56,7 +57,7 @@ public class DataAccessFacade implements DataAccess {
 	}
 
 	@Override
-	public Book searcBook(String isbnStr) {
+	public Book searchBook(String isbnStr) {
 		HashMap<String, Book> bks = readBooksMap();
 		return bks!=null?(bks.containsKey(isbnStr)?bks.get(isbnStr):null):null;
 	}
@@ -74,7 +75,22 @@ public class DataAccessFacade implements DataAccess {
 		return (HashMap<String, LibraryMember>) readFromStorage(
 				StorageType.MEMBERS);
 	}
-	
+
+	@Override
+	public HashMap<String, CheckoutRecordEntry> readCheckoutRecordEntryMap() {
+		Object obo = readFromStorage(StorageType.RECORDS);
+		if (obo == null)
+			return new HashMap<String, CheckoutRecordEntry>();
+		return (HashMap<String, CheckoutRecordEntry>) readFromStorage(StorageType.RECORDS);
+	}
+
+	public void saveNewCheckoutRecordEntry(CheckoutRecordEntry entry) {
+		HashMap<String, CheckoutRecordEntry> recs = readCheckoutRecordEntryMap();
+		String recordId = entry.getCheckoutRecord().getMember().getMemberId() + " - " + entry.getBookCopy().getBook().getIsbn() + " - " + entry.getBookCopy().getCopyNum();
+		recs.put(recordId, entry);
+		saveToStorage(StorageType.RECORDS, recs);
+	}
+
 	@SuppressWarnings("unchecked")
 	public HashMap<String, User> readUserMap() {
 		//Returns a Map with name/value pairs being

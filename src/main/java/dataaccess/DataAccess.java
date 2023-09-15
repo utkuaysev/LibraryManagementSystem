@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import business.Book;
+import business.CheckoutRecordEntry;
 import business.LibraryMember;
-import dataaccess.DataAccessFacade.StorageType;
 
 public interface DataAccess { 
 	HashMap<String,Book> readBooksMap();
@@ -14,6 +14,7 @@ public interface DataAccess {
 	void saveNewMember(LibraryMember member);
 	void saveAllMember(List<LibraryMember> memberList);
 	LibraryMember searchMember(String memberId);
-	Book searcBook(String isbnStr);
+	Book searchBook(String isbnStr);
 	void saveNewBook(Book book);
+	HashMap<String, CheckoutRecordEntry> readCheckoutRecordEntryMap();
 }
