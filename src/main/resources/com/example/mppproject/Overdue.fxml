@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.OverdueController">
+    <children>
+        <TextField fx:id="fieldISBN" layoutX="14.0" layoutY="27.0" prefHeight="40.0" prefWidth="150.0" promptText="Book ISBN" />
+        <Button fx:id="btnSearch" layoutX="182.0" layoutY="27.0" mnemonicParsing="false" onAction="#searchOverDueCheckout" prefHeight="40.0" prefWidth="100.0" text="Search" />
+        <TableView fx:id="tblOverdueCheckout" layoutX="14.0" layoutY="86.0" prefHeight="388.0" prefWidth="800.0">
+            <columns>
+                <TableColumn prefWidth="75.0" text="ISBN">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="isbn" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="256.0" text="Book Title">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="bookTitle" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn minWidth="0.0" prefWidth="86.0" text="Copy #">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="bookCopyNum" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="115.0" text="Due Date">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="dueDate" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="104.0" text="Member ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="memberId" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="183.0" text="Member Fullname">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="fullNameOfMember" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

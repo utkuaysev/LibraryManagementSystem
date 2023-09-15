@@ -47,7 +47,6 @@ public class LoginPageController {
             stg.setScene(scene);
             stg.show();
         } catch (LoginException | IOException ex) {
-            // OptionPane.
             messageBar.setFill(Color.RED);
             messageBar.setText("Error! " + ex.getMessage());
 
