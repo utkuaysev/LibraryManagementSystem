@@ -103,6 +103,8 @@ public class AddBookController implements Initializable {
 
         authors.add(author);
         addAuthor();
+        messageBar.setFill(Color.GREEN);;
+        messageBar.setText("Added Author");
     }
 
     private void addAuthor() {

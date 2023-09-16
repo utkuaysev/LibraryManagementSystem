@@ -97,6 +97,11 @@ public class MemberController implements Initializable {
         }
     }
 
+    @FXML
+    void refresh() {
+        initTableView();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initTableView();

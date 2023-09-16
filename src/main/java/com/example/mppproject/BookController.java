@@ -74,6 +74,11 @@ public class BookController implements Initializable {
         }
     }
 
+    @FXML
+    void refresh() {
+        initTableView();
+    }
+
     public void initTableView() {
         colTitle.setCellValueFactory(new PropertyValueFactory<BookTableRecord, String>("title"));
         colIsbn.setCellValueFactory(new PropertyValueFactory<BookTableRecord, String>("isbn"));

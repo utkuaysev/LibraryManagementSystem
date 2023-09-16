@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.MemberController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.MemberController">
    <children>
       <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="800.0">
         <columns>
@@ -17,7 +19,8 @@
             <TableColumn fx:id="colZip" prefWidth="95.0" text="Zip" />
         </columns>
       </TableView>
-      <Button fx:id="addMember" layoutX="600.0" layoutY="420.0" mnemonicParsing="false" onAction="#onAddMemberClick" text="Add Member" />
-      <Button fx:id="editMember" layoutX="700.0" layoutY="420.0" mnemonicParsing="false" onAction="#onEditClick" text="Edit" />
+      <Button fx:id="addMember" layoutX="701.0" layoutY="420.0" mnemonicParsing="false" onAction="#onAddMemberClick" prefHeight="38.0" prefWidth="113.0" text="Add Member" />
+      <Button fx:id="editMember" layoutX="634.0" layoutY="420.0" mnemonicParsing="false" onAction="#onEditClick" prefHeight="38.0" prefWidth="60.0" text="Edit" />
+      <Button fx:id="refreshButton" layoutX="549.0" layoutY="420.0" mnemonicParsing="false" onAction="#refresh" prefHeight="38.0" prefWidth="78.0" text="Refresh" />
    </children>
 </AnchorPane>
