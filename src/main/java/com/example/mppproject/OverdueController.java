@@ -10,10 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.time.LocalDate;
@@ -41,6 +38,9 @@ public class OverdueController {
     @FXML
     private TableColumn<OverdueInfo, String> clmDueDate;
 
+    @FXML
+    private Label Overduemsg;
+
 
     ObservableList<OverdueInfo> searchData = FXCollections.observableArrayList();
 
@@ -57,29 +57,33 @@ public class OverdueController {
     public void searchOverDueCheckout(ActionEvent actionEvent) {
         System.out.println("--- Searching for Overdue Checkouts");
         String isbn = fieldISBN.getText().trim();
-        if(isbn.isEmpty()) return;
+        if (isbn.isEmpty()) {
+            showError("Error! isbn Cannot be Empty");
+            return;
+        }
         searchData.clear();
         SystemController sc = new SystemController();
         HashMap<String, LibraryMember> records = sc.allMemberMap();
 
         Book searchedBook = sc.searchBook(isbn);
 
+        if(searchedBook == null) {
+            showError("Error! Book not found");
+            return;
+        }
+
         for (LibraryMember lm : records.values()) {
             if (lm.getCheckoutRecord() != null) {
-                LibraryMember memberInfo = lm;
-                List<CheckoutRecordEntry> a = memberInfo.getCheckoutRecord().getCheckoutRecordEntryList();
-
+                List<CheckoutRecordEntry> a = lm.getCheckoutRecord().getCheckoutRecordEntryList();
                 for (CheckoutRecordEntry record : a) {
-                    System.out.println(record);
                     if (record.getBookCopy().getBook().getIsbn().equals(isbn) && record.getDueDate().isBefore(LocalDate.now()) && !searchedBook.isAvailable()) {
                         OverdueInfo br = new OverdueInfo();
-                        br.setIsbn(record.getBookCopy().getBook().getIsbn());
-                        br.setTitle(record.getBookCopy().getBook().getTitle());
+                        br.setIsbn(searchedBook.getIsbn());
+                        br.setTitle(searchedBook.getTitle());
                         br.setCopyNum(String.valueOf(record.getBookCopy().getCopyNum()));
-                        br.setMemberId(memberInfo.getMemberId());
-                        br.setName(memberInfo.getFirstName() + " " + memberInfo.getLastName());
+                        br.setMemberId(lm.getMemberId());
+                        br.setName(lm.getFirstName() + " " + lm.getLastName());
                         br.setDueDate(String.valueOf(record.getDueDate()));
-//                        System.out.println(br);
                         searchData.add(br);
                     }
                 }
@@ -87,5 +91,14 @@ public class OverdueController {
 
         }
         tblOverdueCheckout.setItems(searchData);
+    }
+
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, message);
+        alert.showAndWait();
+    }
+    private void showSuccess(String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message);
+        alert.showAndWait();
     }
 }

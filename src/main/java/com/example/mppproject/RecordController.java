@@ -41,6 +41,7 @@ public class RecordController {
     ObservableList<RecordInfo> searchData = FXCollections.observableArrayList();
 
     public void initialize() {
+        btnPrintRecord.setDisable(true);
         clmISBN.setCellValueFactory(new PropertyValueFactory<RecordInfo, String>("isbn"));
         clmCopyNum.setCellValueFactory(new PropertyValueFactory<RecordInfo, String>("copyNum"));
         clmTitle.setCellValueFactory(new PropertyValueFactory<RecordInfo, String>("title"));
@@ -54,33 +55,40 @@ public class RecordController {
         System.out.println("---Searching CheckoutRecord data");
         String memberID = txtRecordMemberId.getText();
         if (memberID == null || memberID.equals("")) {
+            btnPrintRecord.setDisable(true);
+            tblCheckOutRecords.setItems(null);
+            showError("Error! MemberId cannot be empty");
             return;
         }
         searchData.clear();
-
         SystemController sc = new SystemController();
         HashMap<String, LibraryMember> records = sc.allMemberMap();
 
-        for (LibraryMember lm : records.values()) {
+        LibraryMember lm = records.get(memberID);
+
+        if(lm == null) {
+            btnPrintRecord.setDisable(true);
+            tblCheckOutRecords.setItems(null);
+            showError("Error! Member not found");
+            return;
+        }
+
             if (lm.getCheckoutRecord() != null && lm.getMemberId().equals(memberID)) {
-                LibraryMember memberInfo = lm;
-                List<CheckoutRecordEntry> a = memberInfo.getCheckoutRecord().getCheckoutRecordEntryList();
+                List<CheckoutRecordEntry> a = lm.getCheckoutRecord().getCheckoutRecordEntryList();
                 for (CheckoutRecordEntry record : a) {
                     RecordInfo br = new RecordInfo();
                     br.setIsbn(record.getBookCopy().getBook().getIsbn());
                     br.setCopyNum(String.valueOf(record.getBookCopy().getCopyNum()));
                     br.setTitle(record.getBookCopy().getBook().getTitle());
                     br.setMemberId(memberID);
-                    br.setName(memberInfo.getFirstName() + " " + memberInfo.getLastName());
+                    br.setName(lm.getFirstName() + " " + lm.getLastName());
                     br.setOutDate(String.valueOf(record.getCheckoutDate()));
                     br.setDueDate(String.valueOf(record.getDueDate()));
                     searchData.add(br);
                 }
             }
-
-        }
-//        tblCheckOutRecords.getItems().clear();
         tblCheckOutRecords.setItems(searchData);
+        btnPrintRecord.setDisable(false);
     }
 
     public void printCheckoutRecords(ActionEvent evt) {
@@ -97,5 +105,14 @@ public class RecordController {
             }
         });
     }
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, message);
+        alert.showAndWait();
+    }
+    private void showSuccess(String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message);
+        alert.showAndWait();
+    }
+
 
 }

@@ -17,5 +17,6 @@
                 <TableColumn fx:id="clmMemberName" prefWidth="225.0" text="Member Name" />
             </columns>
         </TableView>
+      <Label fx:id="Overduemsg" layoutX="323.0" layoutY="27.0" prefHeight="40.0" prefWidth="231.0" />
     </children>
 </AnchorPane>

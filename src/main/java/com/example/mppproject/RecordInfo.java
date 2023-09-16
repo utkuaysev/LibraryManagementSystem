@@ -68,24 +68,25 @@ public class RecordInfo {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
+		sb.append("\n\t");
 		sb.append("Book :");
 		sb.append(isbn);
-		sb.append("\n\t");
+		sb.append(", ");
 		sb.append("Title: " + title);
 
-		sb.append("\n\t");
+		sb.append(", ");
 		sb.append("Copy number: " + copyNum);
 
-		sb.append("\n\t");
+		sb.append(", ");
 		sb.append("Member ID: " + memberId);
 
-		sb.append("\n\t");
+		sb.append(", ");
 		sb.append("Member Name: " + name);
 
-		sb.append("\n\t");
+		sb.append(", ");
 		sb.append("Checkout Date: " + outDate);
 
-		sb.append("\n\t");
+		sb.append(", ");
 		sb.append("Due Date: " + dueDate);
 
 		return sb.toString();
