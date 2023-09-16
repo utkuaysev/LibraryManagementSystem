@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.MainPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.MainPageController">
     <children>
       <SplitPane dividerPositions="0.8815274151436031" orientation="VERTICAL" prefHeight="600.0" prefWidth="830.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="522.0" prefWidth="828.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="576.0" prefWidth="829.0">
                <children>
                     <TabPane fx:id="tabPane" prefHeight="500.0" prefWidth="830.0" tabClosingPolicy="UNAVAILABLE">
                         <tabs>
                             <Tab fx:id="tabBook" text="Book">
                                 <fx:include source="BookPage.fxml" />
                             </Tab>
-                            <Tab fx:id="tabMember" text="Member" >
+                            <Tab fx:id="tabMember" text="Member">
                                 <fx:include source="Member.fxml" />
                             </Tab>
                             <Tab fx:id="tabCheckout" text="Checkout Book">
                                 <fx:include source="CheckoutPage.fxml" />
                             </Tab>
-                            <Tab fx:id="tabAddCopy" text="Add Copy" >
+                            <Tab fx:id="tabAddCopy" text="Add Copy">
                                 <fx:include source="AddCopyPage.fxml" />
                             </Tab>
                         <Tab fx:id="tabOverdue" text="Overdue">

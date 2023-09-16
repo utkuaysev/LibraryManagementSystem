@@ -60,6 +60,9 @@ public class AddBookController implements Initializable {
     private ComboBox<String> checkoutDropdown;
 
     @FXML
+    private ComboBox<String> authorsDropdown;
+
+    @FXML
     private TextField isbnField;
 
     @FXML
@@ -84,7 +87,6 @@ public class AddBookController implements Initializable {
             return;
         }
 
-
         Address address = new Address(
                 authorStreet.getText().trim(),
                 authorCity.getText().trim(),
@@ -100,7 +102,11 @@ public class AddBookController implements Initializable {
         );
 
         authors.add(author);
-        System.out.println(author.getFirstName() + " " + author.getLastName());
+        ObservableList<String> items = FXCollections.observableArrayList();
+        authors.forEach(a -> {
+            items.add(a.getFirstName()+" "+a.getLastName());
+        });
+        authorsDropdown.setItems(items);
     }
 
     @FXML
