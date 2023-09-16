@@ -1,60 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.AddCopyPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.AddCopyPageController">
     <children>
 
         <BorderPane prefHeight="600.0" prefWidth="830.0">
             <center>
                 <VBox prefHeight="555.0" prefWidth="580.0" BorderPane.alignment="CENTER">
                     <children>
-                  <Label prefHeight="31.0" prefWidth="832.0" text="                                                                    ISBN" textFill="#200f59">
+                  <Label prefHeight="7.0" prefWidth="830.0" text="                                                                                                ISBN" textFill="#200f59">
                      <font>
-                        <Font size="21.0" />
+                        <Font size="15.0" />
                      </font>
                   </Label>
-                        <TextField fx:id="isbn" prefHeight="48.0" prefWidth="830.0" promptText="ISBN">
+                        <TextField fx:id="isbn" prefHeight="32.0" prefWidth="830.0" promptText="ISBN">
                             <font>
-                                <Font size="18.0" />
+                                <Font size="14.0" />
                             </font>
                         </TextField>
-                        <Button id="lookUpButton" fx:id="lookUpButton" defaultButton="true" mnemonicParsing="false" prefHeight="52.0" prefWidth="830.0" text="Look Up" textFill="#302e2e">
+                        <Button id="lookUpButton" fx:id="lookUpButton" defaultButton="true" mnemonicParsing="false" prefHeight="42.0" prefWidth="830.0" text="Look Up" textFill="#302e2e">
                             <font>
-                                <Font size="21.0" />
+                                <Font size="17.0" />
                             </font>
                         </Button>
-                  <Label prefHeight="18.0" prefWidth="834.0" text="                                                                    Title" textFill="#200f59">
+                  <Label prefHeight="18.0" prefWidth="834.0" text="                                                                                                 Title" textFill="#200f59">
                      <font>
-                        <Font size="21.0" />
+                        <Font size="15.0" />
                      </font>
                   </Label>
                         <TextField id="title" fx:id="title" editable="false" prefHeight="50.0" prefWidth="830.0" promptText="Title">
                             <font>
-                                <Font size="21.0" />
+                                <Font size="14.0" />
                             </font>
                         </TextField>
-                  <Label prefHeight="18.0" prefWidth="840.0" text="                                                      Max Checkout Length" textFill="#200f59">
+                  <Label prefHeight="18.0" prefWidth="840.0" text="                                                                                Max Checkout Length" textFill="#200f59">
                      <font>
-                        <Font size="21.0" />
+                        <Font size="15.0" />
                      </font>
                   </Label>
                         <TextField id="maxCheckoutLength" fx:id="maxCheckoutLength" editable="false" prefHeight="49.0" prefWidth="830.0" promptText="Max Checkout Length">
                             <font>
-                                <Font size="21.0" />
+                                <Font size="14.0" />
                             </font>
                         </TextField>
-                        <TableView id="tableView" fx:id="tableView" prefHeight="109.0" prefWidth="830.0">
+                        <TableView id="tableView" fx:id="tableView" prefHeight="190.0" prefWidth="830.0">
                             <columns>
                                 <TableColumn id="copyNumColumn" fx:id="copyNumColumn" prefWidth="384.79995119571686" text="Copy Num" />
                                 <TableColumn id="isAvailableColumn" fx:id="isAvailableColumn" prefWidth="437.6001281738281" text="Is Available" />
                             </columns>
                         </TableView>
-                    <Button fx:id="addCopyButton" defaultButton="true" mnemonicParsing="false" prefHeight="58.0" prefWidth="830.0" text="Add Copy">
+                    <Button fx:id="addCopyButton" defaultButton="true" mnemonicParsing="false" prefHeight="45.0" prefWidth="830.0" text="Add Copy">
                         <font>
-                            <Font size="21.0" />
+                            <Font size="17.0" />
                         </font>
                     </Button>
                     </children>
