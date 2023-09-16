@@ -35,11 +35,11 @@
             <TextField fx:id="authorCity" layoutX="78.0" layoutY="153.0" prefHeight="26.0" prefWidth="255.0" promptText="City" />
             <TextField fx:id="authorState" layoutX="78.0" layoutY="187.0" prefHeight="26.0" prefWidth="255.0" promptText="State" />
             <TextField fx:id="authorZip" layoutX="78.0" layoutY="222.0" prefHeight="26.0" prefWidth="255.0" promptText="Zip" />
-            <Button fx:id="addAuthorButton" layoutX="291.0" layoutY="334.0" mnemonicParsing="false" onAction="#onAddAuthorClick" text="Add" />
+            <Button fx:id="addAuthorButton" layoutX="291.0" layoutY="334.0" mnemonicParsing="false" onAction="#createAuthor" text="Create" />
          </children>
       </AnchorPane>
       <TextArea fx:id="authorBio" layoutX="151.0" layoutY="451.0" prefHeight="74.0" prefWidth="255.0" promptText="Bio" />
-      <Button fx:id="saveBook" layoutX="428.0" layoutY="575.0" mnemonicParsing="false" onAction="#onSaveBookClick" text="Save" />
+      <Button fx:id="saveBook" layoutX="428.0" layoutY="575.0" mnemonicParsing="false" onAction="#saveBook" text="Save" />
       <Button fx:id="cancel" layoutX="365.0" layoutY="575.0" mnemonicParsing="false" onAction="#onCancelBookClick" text="Cancel" />
       <ComboBox fx:id="authorsDropdown" layoutX="151.0" layoutY="166.0" prefHeight="26.0" prefWidth="255.0" promptText="Author List" />
       <Text fx:id="messageBar" layoutX="8.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="338.21630859375" />

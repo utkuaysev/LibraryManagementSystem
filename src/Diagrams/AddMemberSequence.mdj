@@ -193,14 +193,14 @@
 													"left": 65,
 													"top": 105,
 													"width": 1,
-													"height": 408
+													"height": 416
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 16,
 											"top": 40,
 											"width": 97.40087890625,
-											"height": 473,
+											"height": 481,
 											"stereotypeDisplay": "icon",
 											"nameCompartment": {
 												"$ref": "AAAAAAGKm3d0eGJGSiU="
@@ -1551,14 +1551,14 @@
 													"left": 508,
 													"top": 80,
 													"width": 1,
-													"height": 441
+													"height": 449
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 472,
 											"top": 40,
 											"width": 72.736328125,
-											"height": 481,
+											"height": 489,
 											"nameCompartment": {
 												"$ref": "AAAAAAGKm4uhNWPr43w="
 											},
