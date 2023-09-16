@@ -41,7 +41,7 @@
       <TextArea fx:id="authorBio" layoutX="151.0" layoutY="451.0" prefHeight="74.0" prefWidth="255.0" promptText="Bio" />
       <Button fx:id="saveBook" layoutX="428.0" layoutY="575.0" mnemonicParsing="false" onAction="#onSaveBookClick" text="Save" />
       <Button fx:id="cancel" layoutX="365.0" layoutY="575.0" mnemonicParsing="false" onAction="#onCancelBookClick" text="Cancel" />
-      <ComboBox layoutX="151.0" layoutY="166.0" prefHeight="26.0" prefWidth="255.0" promptText="Author List" />
+      <ComboBox fx:id="authorsDropdown" layoutX="151.0" layoutY="166.0" prefHeight="26.0" prefWidth="255.0" promptText="Author List" />
       <Text fx:id="messageBar" layoutX="8.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="338.21630859375" />
    </children>
 </AnchorPane>
