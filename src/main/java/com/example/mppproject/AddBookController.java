@@ -80,7 +80,7 @@ public class AddBookController implements Initializable {
     }
 
     @FXML
-    void onAddAuthorClick(ActionEvent event) {
+    void createAuthor(ActionEvent event) {
         if (isAuthorInvalid()) {
             messageBar.setFill(Color.RED);;
             messageBar.setText("Invalid Author!");
@@ -102,6 +102,10 @@ public class AddBookController implements Initializable {
         );
 
         authors.add(author);
+        addAuthor();
+    }
+
+    private void addAuthor() {
         ObservableList<String> items = FXCollections.observableArrayList();
         authors.forEach(a -> {
             items.add(a.getFirstName()+" "+a.getLastName());
@@ -110,30 +114,32 @@ public class AddBookController implements Initializable {
     }
 
     @FXML
-    void onSaveBookClick(ActionEvent event) {
+    void saveBook(ActionEvent event) {
         if (isBookInvalid()) {
             messageBar.setFill(Color.RED);;
             messageBar.setText("Invalid Book!");
             return;
         }
-
-        int checkoutLength = Integer.parseInt(
-                checkoutDropdown.getSelectionModel().selectedItemProperty().getValue()
-        );
-
-        Book book = new Book(
-                isbnField.getText().trim(),
-                titleField.getText().trim(),
-                checkoutLength,
-                authors
-        );
-
-        System.out.println(book);
-
+        Book book = buildBook();
         new SystemController().saveNewBook(book);
         authors.clear();
         messageBar.setFill(Color.GREEN);;
         messageBar.setText("Book Saved Successfully");
+    }
+
+    private int getCheckoutLength() {
+        return Integer.parseInt(
+                checkoutDropdown.getSelectionModel().selectedItemProperty().getValue()
+        );
+    }
+
+    private Book buildBook() {
+        return new Book(
+                isbnField.getText().trim(),
+                titleField.getText().trim(),
+                getCheckoutLength(),
+                authors
+        );
     }
 
     @FXML
