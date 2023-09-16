@@ -83,7 +83,7 @@ public class BookController implements Initializable {
         tableView.setItems(getBooks());
     }
 
-    private ObservableList<BookTableRecord> getBooks() {
+        private ObservableList<BookTableRecord> getBooks() {
         ObservableList<BookTableRecord> bookList = FXCollections.observableArrayList();
         List<Book> books = new SystemController().allBooks();
 
