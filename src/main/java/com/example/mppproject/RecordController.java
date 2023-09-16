@@ -58,8 +58,8 @@ public class RecordController {
         }
         searchData.clear();
 
-        DataAccess da = new DataAccessFacade();
-        HashMap<String, LibraryMember> records = da.readMemberMap();
+        SystemController sc = new SystemController();
+        HashMap<String, LibraryMember> records = sc.allMemberMap();
 
         for (LibraryMember lm : records.values()) {
             if (lm.getCheckoutRecord() != null && lm.getMemberId().equals(memberID)) {

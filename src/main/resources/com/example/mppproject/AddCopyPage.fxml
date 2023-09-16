@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.AddCopyPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mppproject.AddCopyPageController">
     <children>
 
         <BorderPane prefHeight="600.0" prefWidth="830.0">
@@ -52,21 +46,21 @@
                                 <Font size="21.0" />
                             </font>
                         </TextField>
-                        <TableView id="tableView" fx:id="tableView" prefHeight="349.0" prefWidth="830.0">
+                        <TableView id="tableView" fx:id="tableView" prefHeight="109.0" prefWidth="830.0">
                             <columns>
                                 <TableColumn id="copyNumColumn" fx:id="copyNumColumn" prefWidth="384.79995119571686" text="Copy Num" />
                                 <TableColumn id="isAvailableColumn" fx:id="isAvailableColumn" prefWidth="437.6001281738281" text="Is Available" />
                             </columns>
                         </TableView>
+                    <Button fx:id="addCopyButton" defaultButton="true" mnemonicParsing="false" prefHeight="58.0" prefWidth="830.0" text="Add Copy">
+                        <font>
+                            <Font size="21.0" />
+                        </font>
+                    </Button>
                     </children>
                 </VBox>
             </center>
         </BorderPane>
-        <Button fx:id="addCopyButton" defaultButton="true" layoutX="7.0" layoutY="553.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="830.0" text="Add Copy">
-            <font>
-                <Font size="21.0" />
-            </font>
-        </Button>
 
     </children>
 </AnchorPane>
