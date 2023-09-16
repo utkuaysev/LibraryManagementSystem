@@ -122,6 +122,13 @@ public class AddBookController implements Initializable {
             messageBar.setText("Invalid Book!");
             return;
         }
+
+        if (isIsbnAlreadyExists(isbnField.getText().trim())) {
+            messageBar.setFill(Color.RED);;
+            messageBar.setText("Book ISBN already exists!");
+            return;
+        }
+
         Book book = buildBook();
         new SystemController().saveNewBook(book);
         authors.clear();
@@ -164,6 +171,14 @@ public class AddBookController implements Initializable {
                 isbnField.getText().trim().isEmpty() ||
                 authors.size() == 0 ||
                 checkoutDropdown.getSelectionModel().isEmpty();
+    }
+
+    private boolean isIsbnAlreadyExists(String isbn) {
+        List<Book> books = new SystemController().allBooks();
+        for (Book book: books) {
+            if (book.getIsbn().equalsIgnoreCase(isbn)) return true;
+        }
+        return false;
     }
 
 }
