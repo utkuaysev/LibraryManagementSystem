@@ -121,7 +121,7 @@ public class MemberController implements Initializable {
 
     private ObservableList<MemberInfo> getMembers() {
         ObservableList<MemberInfo> memberList = FXCollections.observableArrayList();
-        List<LibraryMember> members = new SystemController().allMembers();
+        List<LibraryMember> members = SystemController.getInstance().allMembers();
 
         // LibraryMember to memberInfo
         for (LibraryMember member: members) {

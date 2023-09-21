@@ -66,7 +66,7 @@ public class CheckoutPageController {
 
     @FXML
     private void initialize() {
-        ControllerInterface systemController = new SystemController();
+        ControllerInterface systemController = SystemController.getInstance();
         ObservableList<Checkout> data = FXCollections.observableArrayList();
         tableView.setVisible(true);
         tableView.setItems(data);

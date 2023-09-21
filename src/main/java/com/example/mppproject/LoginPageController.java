@@ -38,7 +38,7 @@ public class LoginPageController {
         try {
             String uname = usernameField.getText();
             String password = passwordField.getText();
-            ControllerInterface c = new SystemController();
+            ControllerInterface c = SystemController.getInstance();
             c.login(uname.trim(), password.trim());
             Parent root = FXMLLoader.load(MainPage.class.getResource("MainPage.fxml"));
             Scene scene = new Scene(root);

@@ -67,7 +67,7 @@ public class EditMemberController {
             return;
         }
 
-        ControllerInterface systemController = new SystemController();
+        ControllerInterface systemController = SystemController.getInstance();
         HashMap<String, LibraryMember> members = systemController.allMemberMap();
         LibraryMember editedMember = buildLibraryMember();
 

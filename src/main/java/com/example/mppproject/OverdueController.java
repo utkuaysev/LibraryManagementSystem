@@ -62,7 +62,7 @@ public class OverdueController {
             return;
         }
         searchData.clear();
-        SystemController sc = new SystemController();
+        SystemController sc = SystemController.getInstance();
         HashMap<String, LibraryMember> records = sc.allMemberMap();
 
         Book searchedBook = sc.searchBook(isbn);

@@ -59,7 +59,7 @@ public class AddCopyPageController {
 
 
     public void initialize() {
-        ControllerInterface systemController = new SystemController();
+        ControllerInterface systemController = SystemController.getInstance();
         ObservableList<BookCopyInfo> data = FXCollections.observableArrayList();
         tableView.setItems(data);
         copyNumColumn.setCellValueFactory(new PropertyValueFactory<>("copyNum"));

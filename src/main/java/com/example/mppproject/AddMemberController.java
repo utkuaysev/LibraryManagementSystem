@@ -43,7 +43,7 @@ public class AddMemberController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ControllerInterface systemController = new SystemController();
+        ControllerInterface systemController = SystemController.getInstance();
         List<LibraryMember> members = systemController.allMembers();
         if (members.size() > 0) {
             int lastMemberId = Integer.parseInt(members.get(members.size()-1).getMemberId());
@@ -61,7 +61,7 @@ public class AddMemberController implements Initializable {
             return;
         }
 
-        ControllerInterface systemController = new SystemController();
+        ControllerInterface systemController = SystemController.getInstance();
         systemController.saveNewMember(buildLibraryMember());
 
         messageBar.setFill(Color.GREEN);;

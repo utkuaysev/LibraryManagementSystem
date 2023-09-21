@@ -61,7 +61,7 @@ public class RecordController {
             return;
         }
         searchData.clear();
-        SystemController sc = new SystemController();
+        SystemController sc = SystemController.getInstance();
         HashMap<String, LibraryMember> records = sc.allMemberMap();
 
         LibraryMember lm = records.get(memberID);

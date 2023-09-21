@@ -90,7 +90,7 @@ public class BookController implements Initializable {
 
     private ObservableList<BookTableRecord> getBooks() {
         ObservableList<BookTableRecord> bookList = FXCollections.observableArrayList();
-        List<Book> books = new SystemController().allBooks();
+        List<Book> books = SystemController.getInstance().allBooks();
 
         for (Book book: books) {
             BookTableRecord record = new BookTableRecord();

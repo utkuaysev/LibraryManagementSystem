@@ -20,7 +20,7 @@ import business.SystemController;
 
 
 public class LibrarySystem extends JFrame implements LibWindow {
-	ControllerInterface ci = new SystemController();
+	ControllerInterface ci = SystemController.getInstance();
 	public final static LibrarySystem INSTANCE =new LibrarySystem();
 	JPanel mainPanel;
 	JMenuBar menuBar;

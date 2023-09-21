@@ -21,6 +21,17 @@ public class DataAccessFacade implements DataAccess {
 	enum StorageType {
 		BOOKS, MEMBERS, USERS, RECORDS;
 	}
+	private static DataAccessFacade dataAccessFacade;
+	private DataAccessFacade(){
+
+	}
+
+	public static DataAccessFacade getInstance(){
+		if(dataAccessFacade == null){
+			dataAccessFacade = new DataAccessFacade();
+		}
+		return dataAccessFacade;
+	}
 	
 	private static String OUTPUT_DIR = System.getProperty("user.dir");
 	public static final String DATE_PATTERN = "MM/dd/yyyy";

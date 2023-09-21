@@ -20,7 +20,7 @@ import business.SystemController;
 public class AllBookIdsWindow extends JFrame implements LibWindow {
 	private static final long serialVersionUID = 1L;
 	public static final AllBookIdsWindow INSTANCE = new AllBookIdsWindow();
-    ControllerInterface ci = new SystemController();
+    ControllerInterface ci = SystemController.getInstance();
     private boolean isInitialized = false;
 	
 	private JPanel mainPanel;

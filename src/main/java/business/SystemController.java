@@ -11,10 +11,22 @@ import dataaccess.DataAccessFacade;
 import dataaccess.User;
 
 public class SystemController implements ControllerInterface {
+	private static SystemController systemController;
+
+	public static SystemController getInstance(){
+		if(systemController == null){
+			systemController = new SystemController();
+		}
+		return systemController;
+	}
+
 	public static Auth currentAuth = null;
-	
+
+	private SystemController(){
+
+	}
 	public void login(String id, String password) throws LoginException {
-		DataAccess da = new DataAccessFacade();
+		DataAccess da = DataAccessFacade.getInstance();
 		HashMap<String, User> map = da.readUserMap();
 		if(!map.containsKey(id)) {
 			throw new LoginException("ID " + id + " not found");
@@ -28,7 +40,7 @@ public class SystemController implements ControllerInterface {
 	}
 	@Override
 	public List<String> allMemberIds() {
-		DataAccess da = new DataAccessFacade();
+		DataAccess da = DataAccessFacade.getInstance();
 		List<String> retval = new ArrayList<>();
 		retval.addAll(da.readMemberMap().keySet());
 		return retval;
@@ -36,7 +48,7 @@ public class SystemController implements ControllerInterface {
 	
 	@Override
 	public List<String> allBookIds() {
-		DataAccess da = new DataAccessFacade();
+		DataAccess da = DataAccessFacade.getInstance();
 		List<String> retval = new ArrayList<>();
 		retval.addAll(da.readBooksMap().keySet());
 		return retval;
@@ -44,7 +56,7 @@ public class SystemController implements ControllerInterface {
 
 	@Override
 	public List<LibraryMember> allMembers() {
-		DataAccessFacade dataAccessFacade = new DataAccessFacade();
+		DataAccessFacade dataAccessFacade = DataAccessFacade.getInstance();
 		HashMap<String, LibraryMember> memberHashMap = dataAccessFacade.readMemberMap();
 		List<LibraryMember> members = new ArrayList<>(memberHashMap.values());
 		members.sort(Comparator.comparing(LibraryMember::getMemberId));
@@ -53,38 +65,38 @@ public class SystemController implements ControllerInterface {
 
 	@Override
 	public HashMap<String, LibraryMember> allMemberMap() {
-		return new DataAccessFacade().readMemberMap();
+		return DataAccessFacade.getInstance().readMemberMap();
 	}
 
 	@Override
 	public void saveNewMember(LibraryMember member) {
-		new DataAccessFacade().saveNewMember(member);
+		DataAccessFacade.getInstance().saveNewMember(member);
 	}
 
 	@Override
 	public void saveAllMember(List<LibraryMember> memberList) {
-		new DataAccessFacade().saveAllMember(memberList);
+		DataAccessFacade.getInstance().saveAllMember(memberList);
 	}
 
 	@Override
 	public List<Book> allBooks() {
-		HashMap<String, Book> booksMap = new DataAccessFacade().readBooksMap();
+		HashMap<String, Book> booksMap = DataAccessFacade.getInstance().readBooksMap();
 		return booksMap.values().stream().toList();
 	}
 
 	@Override
 	public void saveNewBook(Book book) {
-		new DataAccessFacade().saveNewBook(book);
+		DataAccessFacade.getInstance().saveNewBook(book);
 	}
 
 	@Override
 	public LibraryMember searchMember(String memberIdStr) {
-		return new DataAccessFacade().searchMember(memberIdStr);
+		return DataAccessFacade.getInstance().searchMember(memberIdStr);
 	}
 
 	@Override
 	public Book searchBook(String isbn) {
-		return new DataAccessFacade().searchBook(isbn);
+		return DataAccessFacade.getInstance().searchBook(isbn);
 	}
 
 }

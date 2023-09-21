@@ -130,7 +130,7 @@ public class AddBookController implements Initializable {
         }
 
         Book book = buildBook();
-        new SystemController().saveNewBook(book);
+        SystemController.getInstance().saveNewBook(book);
         authors.clear();
         messageBar.setFill(Color.GREEN);;
         messageBar.setText("Book Saved Successfully");
@@ -174,7 +174,7 @@ public class AddBookController implements Initializable {
     }
 
     private boolean isIsbnAlreadyExists(String isbn) {
-        List<Book> books = new SystemController().allBooks();
+        List<Book> books = SystemController.getInstance().allBooks();
         for (Book book: books) {
             if (book.getIsbn().equalsIgnoreCase(isbn)) return true;
         }
