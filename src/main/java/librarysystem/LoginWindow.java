@@ -16,10 +16,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JOptionPane;
 
-import business.ControllerInterface;
-import business.LoginException;
-import business.SystemController;
-
 
 public class LoginWindow extends JFrame implements LibWindow {
     public static final LoginWindow INSTANCE = new LoginWindow();

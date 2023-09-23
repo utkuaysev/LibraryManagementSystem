@@ -4,8 +4,6 @@ import business.Book;
 import business.CheckoutRecordEntry;
 import business.LibraryMember;
 import business.SystemController;
-import dataaccess.DataAccess;
-import dataaccess.DataAccessFacade;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

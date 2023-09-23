@@ -1,8 +1,6 @@
 package com.example.mppproject;
 
 import business.*;
-import dataaccess.DataAccess;
-import dataaccess.DataAccessFacade;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
